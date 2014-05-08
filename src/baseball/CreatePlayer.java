@@ -23,18 +23,15 @@ public class CreatePlayer {
 		p1.setStats();
 		//p1.printPlayer();
 		
-		/*int hits = 0;
+		//String result = AtBat.AtBat(p1);
+		//System.out.println(result);
 		
-		for (int i=0; i<100; i++){
-			double random = Math.random();
-			if (random <= p1.battingAVG){
-				hits++;
-			}
-		}
-		System.out.println("hits in 1000 at bats: " + hits);
-		*/
-		double samplehits = 0;
+		Inning.Inning(p1);
+		
+
+		/*double samplehits = 0;
 		double sampleAB = 0;
+		double samplePA = 0;
 		double sample1b = 0;
 		double sample2b = 0;
 		double sample3b = 0;
@@ -42,49 +39,38 @@ public class CreatePlayer {
 		double sampleBB = 0;
 		double sampleSO = 0;
 		double sampleHBP = 0;
+		double sampleTB = 0;
 		
-		for (int i=0; i<1000; i++){
-			String result = "Out";
-			double random = Math.random();
-			double baseline = 0;
-			//System.out.println("random: " + random);
+		//for (int i=0; i<739; i++){
 			
-			double[] probabilities = {p1.singleAVG, p1.doubleAVG, p1.tripleAVG, p1.HRAVG, p1.BBAVG, p1.HBPAVG, p1.SOAVG};
-			String[] results = {"Single", "Double", "Triple", "HOME RUN!", "Walk", "Hit By Pitch", "Strikeout"};
-			
-			boolean set = false;
-			int index = 0;
-			while (!set && (index < probabilities.length)){
-				baseline += probabilities[index];
-				if (random <= baseline){
-					result = results[index];
-					set = true;
-				}
-				index++;
-			}
 			
 			
 			//System.out.println(result);
+			
 			
 			if (result == "Single"){
 				sample1b++;	
 				samplehits++;
 				sampleAB++;
+				sampleTB++;
 			}
 			if (result == "Double"){
 				sample2b++;	
 				samplehits++;
 				sampleAB++;
+				sampleTB+=2;
 			}
 			if (result == "Triple"){
 				sample3b++;	
 				samplehits++;
 				sampleAB++;
+				sampleTB+=3;
 			}
 			if (result == "HOME RUN!"){
 				sampleHR++;
 				samplehits++;
 				sampleAB++;
+				sampleTB+=4;
 			}
 			if (result == "Walk"){
 				sampleBB++;				
@@ -99,9 +85,11 @@ public class CreatePlayer {
 			if (result == "Out"){
 				sampleAB++;
 			}
+			samplePA++;
+			
 		}
 		
-		System.out.println("Singles Hit: " + sample1b);
+		System.out.println("Hits: " + samplehits);
 		System.out.println("Doubles Hit: " + sample2b);
 		System.out.println("Triples Hit: " + sample3b);
 		System.out.println("Home Runs Hit: " + sampleHR);
@@ -110,8 +98,15 @@ public class CreatePlayer {
 		System.out.println("Time Hit By Pitch: " + sampleHBP);
 		
 		double sampleAVG = samplehits/sampleAB; 
-		System.out.println("Batting Average: " + sampleAVG);
+		double sampleOBP = (samplehits + sampleBB + sampleHBP) / samplePA;
+		double sampleSLG = sampleTB/sampleAB; 
+		double sampleOPS = sampleOBP + sampleSLG; 
 		
+		System.out.println("AVG: " + sampleAVG);
+		System.out.println("OBP: " + sampleOBP);
+		System.out.println("SLG: " + sampleSLG);
+		System.out.println("OPS: " + sampleOPS);
+		*/
 	}
 }
 
