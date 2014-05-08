@@ -1,6 +1,5 @@
 package baseball;
 
-import java.io.*;
 
 public class Player {
 	String name, pos;

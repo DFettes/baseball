@@ -2,7 +2,7 @@ package baseball;
 
 public class Inning {
 	
-	public static int Inning(Player p){
+	public static int NewInning(Player p){
 		int outs = 0; 
 		int runs = 0;
 		boolean run1b = false;
@@ -19,7 +19,7 @@ public class Inning {
 			System.out.println("Second Base: " + run2b);
 			System.out.println("Third Base: " + run3b);
 			*/
-			String result = AtBat.AtBat(inningPlayer);
+			String result = AtBat.NewAtBat(inningPlayer);
 			//System.out.println("RESULT: " + result);
 			//System.out.println();
 			

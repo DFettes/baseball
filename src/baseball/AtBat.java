@@ -2,7 +2,7 @@ package baseball;
 
 public class AtBat {
 	
-	public static String AtBat(Player p){
+	public static String NewAtBat(Player p){
 		String result = "Out";
 		double random = Math.random();
 		double baseline = 0;

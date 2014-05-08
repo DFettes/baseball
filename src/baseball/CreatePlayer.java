@@ -21,12 +21,31 @@ public class CreatePlayer {
 		p1.pSO(852);
 		p1.pHBP(157);
 		p1.setStats();
-		//p1.printPlayer();
 		
-		//String result = AtBat.AtBat(p1);
+Player p2 = new Player("Babe Ruth");
+		
+		p2.ppos("OF");
+		p2.pG(2503);
+		p2.pPA(10622);
+		p2.pAB(8399);
+		p2.pR(2174);
+		p2.pH(2873);
+		p2.pdoubles(506);
+		p2.ptriples(136);
+		p2.pHR(714);
+		p2.pRBI(2214);
+		p2.pSB(123);
+		p2.pCS(117);
+		p2.pBB(2062);
+		p2.pSO(1330);
+		p2.pHBP(43);
+		p2.setStats();
+		//p2.printPlayer();
+		
+		//String result = AtBat.AtBat(p2);
 		//System.out.println(result);
 		
-		Game.Game(p1, p1);
+		Game.NewGame(p1, p2);
 		
 
 		/*double samplehits = 0;
