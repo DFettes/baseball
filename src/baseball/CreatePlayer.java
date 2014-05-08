@@ -26,7 +26,7 @@ public class CreatePlayer {
 		//String result = AtBat.AtBat(p1);
 		//System.out.println(result);
 		
-		Inning.Inning(p1);
+		Game.Game(p1, p1);
 		
 
 		/*double samplehits = 0;

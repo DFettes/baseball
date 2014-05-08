@@ -2,26 +2,26 @@ package baseball;
 
 public class Inning {
 	
-	public static void Inning(Player p){
+	public static int Inning(Player p){
 		int outs = 0; 
 		int runs = 0;
 		boolean run1b = false;
 		boolean run2b = false;
 		boolean run3b = false;
-		Player p1 = p;
+		Player inningPlayer = p;
 		
 		
 		
 		while (outs < 3){
-			System.out.println("Outs: " + outs);
+			/*System.out.println("Outs: " + outs);
 			System.out.println("Runs: " + runs);
 			System.out.println("First Base: " + run1b);
 			System.out.println("Second Base: " + run2b);
 			System.out.println("Third Base: " + run3b);
-			
-			String result = AtBat.AtBat(p1);
-			System.out.println("RESULT: " + result);
-			System.out.println(); 
+			*/
+			String result = AtBat.AtBat(inningPlayer);
+			//System.out.println("RESULT: " + result);
+			//System.out.println();
 			
 			if (result == "Out" || result == "Strikeout"){
 				outs++;
@@ -107,8 +107,8 @@ public class Inning {
 			}
 		}
 		
-		System.out.println("3 Outs, inning over");
-		System.out.println("Runs: " + runs);
+		//System.out.println("3 Outs, inning over");
+		return runs;
 	}
 	
 
