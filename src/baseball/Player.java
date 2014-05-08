@@ -113,6 +113,19 @@ public class Player {
 	      System.out.println("OPS: " + OPS);
 	      System.out.println("TB: " + TB);
 	      System.out.println("HBP: " + HBP);
+	      
+	      System.out.println("singleAVG: " + singleAVG);
+	      System.out.println("doubleAVG: " + doubleAVG);
+	      System.out.println("tripleAVG: " + tripleAVG);
+	      System.out.println("HRAVG: " + HRAVG);
+	      System.out.println("BBAVG: " + BBAVG);
+	      System.out.println("SOAVG: " + SOAVG);
+	      System.out.println("HBPAVG: " + HBPAVG);
+	      System.out.println("OBPavg: " + (singleAVG+doubleAVG+tripleAVG+HRAVG+BBAVG+HBPAVG));
+	      
+
+	      
+	      
 	   }
 
 }
