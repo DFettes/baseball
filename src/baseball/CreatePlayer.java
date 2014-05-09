@@ -2,7 +2,7 @@ package baseball;
 
 public class CreatePlayer {
 
-	public static void main(String[] args) {
+	public static Player[] CreatePlayers() {
 		Player p1 = new Player("Chase Utley");	
 		p1.ppos("SB");
 		p1.pG(1351);
@@ -230,13 +230,9 @@ public class CreatePlayer {
 		//p18.printPlayer();
 		
 		
-		Team t2 = CreateTeam.NewTeam(p10,p12,p11,p13,p16,p18,p14,p15,p17)[1];
-		Team t1 = CreateTeam.NewTeam(p1,p2,p3,p1,p2,p3,p1,p2,p3)[0];
 		
-		Game.NewGame(t1, t2);
-		
-		
-		
+		Player[] playerArray = {p1,p2,p3,p10,p11,p12,p13,p14,p15,p16,p17,p18};
+		return playerArray;
 
 		/*double samplehits = 0;
 		double sampleAB = 0;
