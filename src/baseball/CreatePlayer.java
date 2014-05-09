@@ -20,6 +20,7 @@ public class CreatePlayer {
 		p1.pSO(852);
 		p1.pHBP(157);
 		p1.setStats();
+		//p1.printPlayer();
 		
 		Player p2 = new Player("Babe Ruth");
 		p2.ppos("RF");

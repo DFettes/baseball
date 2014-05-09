@@ -3,6 +3,7 @@ package baseball;
 public class Inning {
 	
 	public static int[] NewInning(Team t, int BatterUp){
+		String[] results = {"Single", "Double", "Triple", "HOME RUN!", "Walk", "Hit By Pitch", "Strikeout", "Out", "Ground Out", "Fly Out"};
 		int outs = 0; 
 		int[] runsBatter = {0, BatterUp};
 		boolean run1b = false;
@@ -21,14 +22,25 @@ public class Inning {
 			*/
 			
 			Player p1 = t.battingOrder[BatterUp];
-			String result = AtBat.NewAtBat(p1);
-			System.out.println("BATTER: " + p1.name + " - RESULT: " + result);
+			int resultCode = AtBat.NewAtBat(p1);
+			String result = ("BATTER: " + p1.name + " RESULT: " + results[resultCode-1]);
 			//System.out.println();
 			
-			if (result == "Out" || result == "Strikeout"){
+			if (resultCode > 6){
+				if (resultCode == 10 && run3b && outs < 2){
+					double randomSacFly = Math.random();
+					run3b = false;
+					if (randomSacFly < 0.7){
+						runsBatter[0]++;
+						result = (result + " - Sacrifice Fly (SAFE)");
+					}
+					else {outs++;
+					result = (result + " - Sacrifice Fly (Runner Out At Home)");
+					}
+				}
 				outs++;
 			}
-			else if (result == "Single"){		
+			else if (resultCode == 1){		
 				if (run3b){
 					run3b = false;
 					runsBatter[0]++;
@@ -44,7 +56,7 @@ public class Inning {
 				run1b = true;
 			}
 			
-			else if (result == "Double"){		
+			else if (resultCode == 2){		
 				if (run3b){
 					run3b = false;
 					runsBatter[0]++;
@@ -60,7 +72,7 @@ public class Inning {
 				run2b = true;
 			}
 			
-			else if (result == "Triple"){		
+			else if (resultCode == 3){		
 				if (run3b){
 					run3b = false;
 					runsBatter[0]++;
@@ -76,7 +88,7 @@ public class Inning {
 				run3b = true;
 			}
 			
-			else if (result == "HOME RUN!"){		
+			else if (resultCode == 4){		
 				if (run3b){
 					run3b = false;
 					runsBatter[0]++;
@@ -92,7 +104,7 @@ public class Inning {
 				runsBatter[0]++;
 			}
 			
-			else if (result == "Walk" || result == "Hit By Pitch"){		
+			else if (resultCode == 5 || resultCode == 6){		
 				if (run1b && run2b && run3b){
 					runsBatter[0]++;
 				}
@@ -113,6 +125,8 @@ public class Inning {
 			if (BatterUp == 9){
 				BatterUp = 0;
 			}
+			
+			System.out.println(result);
 		}
 		System.out.println();
 		//System.out.println("3 Outs, inning over");

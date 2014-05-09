@@ -22,7 +22,7 @@ public class CreateTeam {
 		t1.tW(0);
 		t1.tL(0);
 		
-		t1.printTeam();
+		//t1.printTeam();
 		System.out.println();
 		
 

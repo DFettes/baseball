@@ -4,10 +4,11 @@ package baseball;
 public class Player {
 	String name, pos;
 	double G, PA, AB, R, H, doubles, triples, HR, RBI, SB, CS, BB, SO, HBP;
-	double singles, battingAVG, singleAVG, doubleAVG, tripleAVG, HRAVG, BBAVG, SOAVG, HBPAVG, OBP, SLG, OPS, TB;
+	double singles, battingAVG, singleAVG, doubleAVG, tripleAVG, HRAVG, BBAVG, SOAVG, HBPAVG, OBP, SLG, OPS, TB, StealAttP, StealSuccP;
 	
 	public void setStats() {
 		if (PA > 0) {
+			//Hitting Stats
 			singles = H - doubles - triples - HR;
 			battingAVG = H/AB;
 			singleAVG = singles/PA;
@@ -21,6 +22,10 @@ public class Player {
 			TB = singles + 2*doubles + 3*triples + 4*HR;
 			SLG = TB/AB;
 			OPS = OBP + SLG;
+			
+			//Speed Stats
+			StealAttP = (SB+CS)*8/PA;
+			StealSuccP = SB/(SB + CS);
 		}
 	}
 	
@@ -121,7 +126,9 @@ public class Player {
 	      System.out.println("SOAVG: " + SOAVG);
 	      System.out.println("HBPAVG: " + HBPAVG);
 	      System.out.println("OBPavg: " + (singleAVG+doubleAVG+tripleAVG+HRAVG+BBAVG+HBPAVG));
-	      
+	      System.out.println("Steal Attempt Rate: " + StealAttP);
+	      System.out.println("Steal Success Rate: " + StealSuccP);
+	      System.out.println();
 
 	      
 	      
