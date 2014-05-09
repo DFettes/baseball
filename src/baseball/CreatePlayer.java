@@ -5,7 +5,7 @@ public class CreatePlayer {
 	public static void main(String[] args) {
 		Player p1 = new Player("Chase Utley");
 		
-		p1.ppos("2B");
+		p1.ppos("SB");
 		p1.pG(1351);
 		p1.pPA(5796);
 		p1.pAB(5023);
@@ -24,7 +24,7 @@ public class CreatePlayer {
 		
 Player p2 = new Player("Babe Ruth");
 		
-		p2.ppos("OF");
+		p2.ppos("LF");
 		p2.pG(2503);
 		p2.pPA(10622);
 		p2.pAB(8399);
@@ -45,7 +45,12 @@ Player p2 = new Player("Babe Ruth");
 		//String result = AtBat.AtBat(p2);
 		//System.out.println(result);
 		
-		Game.NewGame(p1, p2);
+		
+		Team t1 = CreateTeam.NewTeam(p1,p1,p2,p2,p1,p1,p2,p2,p1)[0];
+		Team t2 = CreateTeam.NewTeam(p2,p2,p2,p2,p2,p2,p2,p2,p2)[1];
+		Game.NewGame(t1, t2);
+		
+		
 		
 
 		/*double samplehits = 0;

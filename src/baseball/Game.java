@@ -1,25 +1,30 @@
 package baseball;
 
 public class Game {
-	public static void NewGame(Player player1, Player player2){
+	public static void NewGame(Team team1, Team team2){
 		int inning = 1;
-		int player1Score = 0;
-		int player2Score = 0;
+		int team1Score = 0;
+		int team2Score = 0;
+		int batterUp1 = 0;
+		int batterUp2 = 0;
 		
-		while (inning < 10 || player1Score == player2Score){
-			player1Score += Inning.NewInning(player1);
-			player2Score += Inning.NewInning(player2);
+		while (inning < 10 || team1Score == team2Score){
+			int score1Inc = Inning.NewInning(team1, batterUp1)[0];
+			int score2Inc = Inning.NewInning(team2, batterUp2)[0];
+			team1Score += score1Inc;
+			team2Score += score2Inc;
+			
 			System.out.println("End of Inning " + inning);
-			System.out.println(player1.name + ": " + player1Score);
-			System.out.println(player2.name + ": " + player2Score);
+			System.out.println(team1.name + ": " + team1Score);
+			System.out.println(team2.name + ": " + team2Score);
 			System.out.println();
 			inning++;
 		}
 		
-		if (player1Score > player2Score){
-			System.out.println(player1.name + " Wins!");
+		if (team1Score > team2Score){
+			System.out.println(team1.name + " Win!");
 		}
-		else System.out.println(player2.name + " Wins!");
+		else System.out.println(team2.name + " Win!");
 		
 	}
 
