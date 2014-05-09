@@ -16,7 +16,7 @@ public class Inning {
 		System.out.println("Current Team at Bat: " + t.name);
 		while (outs < 3){
 			//runnersOnBase = RunnersOnBase.checkRunners(runnersOnBase);
-			
+			/*
 			System.out.println("Outs: " + outs);
 			System.out.println("Runs: " + runsBatter[0]);
 			if (run1b !=null){
@@ -25,7 +25,34 @@ public class Inning {
 			System.out.println("Second Base: " + run2b.name);}
 			if (run3b !=null){
 			System.out.println("Third Base: " + run3b.name);}
+			*/
+			if (run1b!=null && run2b==null){
+				int outcome = RunningRolls.Steal(run1b, 1);
+				if (outcome == 1){
+					System.out.println(run1b.name + " Stole Second Base!");
+					run2b = run1b;
+					run1b = null;
+				}
+				else if (outcome == 2){
+					System.out.println(run1b.name + " Caught Stealing Second Base!");
+					run1b = null;
+					outs++;
+				}
+			}
 			
+			if (run2b!=null && run3b==null && outs < 2){
+				int outcome = RunningRolls.Steal(run2b, 2);
+				if (outcome == 1){
+					System.out.println(run2b.name + " Stole Third Base!");
+					run3b = run2b;
+					run2b = null;
+				}
+				else if (outcome == 2){
+					System.out.println(run2b.name + " Caught Stealing Third Base!");
+					run2b = null;
+					outs++;
+				}
+			}
 			
 			Player p1 = t.battingOrder[BatterUp];
 			int resultCode = AtBat.NewAtBat(p1);
@@ -35,14 +62,15 @@ public class Inning {
 			if (resultCode > 6){
 				if (resultCode == 10 && run3b!=null && outs < 2){
 					double randomSacFly = Math.random();
-					run3b = null;
-					if (randomSacFly < 0.7){
+					if (randomSacFly < run3b.StealSuccP){
 						runsBatter[0]++;
-						result = (result + " - Sacrifice Fly (SAFE)");
+						result = (result + " - " + run3b.name + " Scored on Sacrifice Fly");
 					}
-					else {outs++;
-					result = (result + " - Sacrifice Fly (Runner Out At Home)");
+					else {
+						outs++;
+						result = (result + " - " + run3b.name + " Thrown Out At Home");
 					}
+					run3b = null;
 				}
 				outs++;
 			}

@@ -24,7 +24,7 @@ public class Player {
 			OPS = OBP + SLG;
 			
 			//Speed Stats
-			StealAttP = (SB+CS)*8/PA;
+			StealAttP = (SB+CS)*7/PA;
 			StealSuccP = SB/(SB + CS);
 		}
 	}
