@@ -14,7 +14,7 @@ public class CreateTeam {
 		t1.tLF(LF);
 		t1.tCF(CF);
 		t1.tRF(RF);//
-		Player[] t1battingOrder = {P,C,FB,SB,TB,SS,LF,CF,CF,RF};
+		Player[] t1battingOrder = {P,C,FB,SB,TB,SS,LF,CF,RF};
 		t1.tbattingOrder(t1battingOrder);
 				
 		t1.tG(0);
@@ -35,7 +35,7 @@ public class CreateTeam {
 		t2.tLF(LF);
 		t2.tCF(CF);
 		t2.tRF(RF);//
-		Player[] t2battingOrder = {P,C,FB,SB,TB,SS,LF,CF,CF,RF};
+		Player[] t2battingOrder = {P,C,FB,SB,TB,SS,LF,CF,RF};
 		t2.tbattingOrder(t2battingOrder);
 				
 		t2.tG(0);

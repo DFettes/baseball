@@ -11,7 +11,7 @@ public class Inning {
 		//Team inningTeam = t;
 		
 		
-		
+		System.out.println("Current Team at Bat: " + t.name);
 		while (outs < 3){
 			/*System.out.println("Outs: " + outs);
 			System.out.println("Runs: " + runs);
@@ -108,11 +108,15 @@ public class Inning {
 				else run1b = true;
 			}
 			
-			runsBatter[1]++;
+			
+			BatterUp++;
+			if (BatterUp == 9){
+				BatterUp = 0;
+			}
 		}
 		System.out.println();
 		//System.out.println("3 Outs, inning over");
-		runsBatter[1] = runsBatter[1] % 9;
+		runsBatter[1] = BatterUp ;
 		return runsBatter;
 	}
 	
