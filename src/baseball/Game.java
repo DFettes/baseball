@@ -10,12 +10,13 @@ public class Game {
 		
 		while (inning < 10 || team1Score == team2Score){
 			int[] inningArray1 = Inning.NewInning(team1, batterUp1);
-			int[] inningArray2 = Inning.NewInning(team2, batterUp2);
 			int score1Inc = inningArray1[0];
-			int score2Inc = inningArray2[0];
 			team1Score += score1Inc;
-			team2Score += score2Inc;
 			batterUp1 = inningArray1[1];
+			
+			int[] inningArray2 = Inning.NewInning(team2, batterUp2);			
+			int score2Inc = inningArray2[0];			
+			team2Score += score2Inc;			
 			batterUp2 = inningArray2[1];
 			
 			System.out.println("End of Inning " + inning);

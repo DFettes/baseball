@@ -5,6 +5,8 @@ public class Player {
 	String name, pos;
 	double G, PA, AB, R, H, doubles, triples, HR, RBI, SB, CS, BB, SO, HBP;
 	double singles, battingAVG, singleAVG, doubleAVG, tripleAVG, HRAVG, BBAVG, SOAVG, HBPAVG, OBP, SLG, OPS, TB, StealAttP, StealSuccP;
+	double gamePA, gameAB, gameR, gameH, gamesingles, gamedoubles, gametriples, gameHR, gameRBI, gameSB, gameCS, gameBB, gameSO, gameHBP;
+	
 	
 	public void setStats() {
 		if (PA > 0) {
@@ -23,8 +25,10 @@ public class Player {
 			SLG = TB/AB;
 			OPS = OBP + SLG;
 			
+			gamePA=gameAB=gameR=gameH=gamesingles=gamedoubles=gametriples=gameHR=gameRBI=gameSB=gameCS=gameBB=gameSO=gameHBP=0;
+			
 			//Speed Stats
-			StealAttP = (SB+CS)*7/PA;
+			StealAttP = (SB+CS)*4/PA;
 			StealSuccP = SB/(SB + CS);
 		}
 	}
@@ -133,5 +137,26 @@ public class Player {
 	      
 	      
 	   }
+
+	public void printGameStats(){
+		System.out.println();
+		  gameH = gamesingles + gamedoubles + gametriples + gameHR;
+	      System.out.println("Name: "+ name );
+	      System.out.println("Position: " + pos );
+	      System.out.println("PA: " + gamePA);
+	      System.out.println("AB: " + gameAB);
+	      System.out.println("R: " + gameR);
+	      System.out.println("H: " + gameH);
+	      System.out.println("1B: " + gamesingles);
+	      System.out.println("2B: " + gamedoubles);
+	      System.out.println("3B: " + gametriples);
+	      System.out.println("HR: " + gameHR);
+	      System.out.println("RBI: " + gameRBI);
+	      System.out.println("SB: " + gameSB);
+	      System.out.println("CS: " + gameCS);
+	      System.out.println("BB: " + gameBB);
+	      System.out.println("SO: " + gameSO);
+	      System.out.println("HBP: " + gameHBP);
+	}
 
 }

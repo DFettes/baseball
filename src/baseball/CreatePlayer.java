@@ -59,6 +59,13 @@ public class CreatePlayer {
 		p3.setStats();
 		//p3.printPlayer();
 		
+		Player p4 = p1;
+		Player p5 = p2;
+		Player p6 = p3;
+		Player p7 = p1;
+		Player p8 = p2;
+		Player p9 = p3;
+		
 		Player p10 = new Player("Jose Reyes");
 		p10.ppos("SS");
 		p10.pG(1321);
@@ -67,7 +74,7 @@ public class CreatePlayer {
 		p10.pR(890);
 		p10.pH(1610);
 		p10.pdoubles(284);
-		p10.ptriples(284);
+		p10.ptriples(111);
 		p10.pHR(104);
 		p10.pRBI(525);
 		p10.pSB(427);
@@ -232,7 +239,7 @@ public class CreatePlayer {
 		
 		
 		
-		Player[] playerArray = {p1,p2,p3,p10,p11,p12,p13,p14,p15,p16,p17,p18};
+		Player[] playerArray = {p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18};
 		return playerArray;
 
 		/*double samplehits = 0;

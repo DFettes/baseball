@@ -1,7 +1,7 @@
 package baseball;
 
 public class RunningRolls {
-	public static int Steal(Player p, int base){
+	public static int Run(Player p, int base){
 		int outcome = 3;
 		double randomGo = Math.random();
 		
@@ -30,4 +30,19 @@ public class RunningRolls {
 		return outcome;
 	}
 
+	public static int RunFrom2nd(Player p){
+		int outcome = 3;
+		double randomGo = Math.random();		
+		
+			if (randomGo < p.StealSuccP){
+				double randomSafe = Math.random();
+				if (randomSafe < p.StealSuccP){
+						outcome = 1;
+				}
+				else outcome = 2;
+			}
+			else outcome = 3;
+		
+		return outcome;
+	}
 }
