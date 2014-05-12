@@ -28,8 +28,15 @@ public class Game {
 		
 		if (team1Score > team2Score){
 			System.out.println(team1.name + " Win!");
+			team1.W++;
+			team2.L++;
 		}
-		else System.out.println(team2.name + " Win!");
+		else {
+			System.out.println(team2.name + " Win!");
+			team2.W++;
+			team1.L++;
+		}
+		
 		
 	}
 

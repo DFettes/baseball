@@ -58,8 +58,11 @@ public class MainSetup {
 	      System.out.println("SLG: " + SLG);
 	      System.out.println("OPS: " + OPS);
 	      System.out.println("TB: " + TB);
+	      System.out.println("Team 1 Wins: " + t1.W);
+	      System.out.println("Team 2 Wins: " + t2.W);
 	}
 
+	
 	public static void main(String[] args) {
 		Player[] playerArray = CreatePlayer.CreatePlayers();
 		Player p1 = playerArray[0];
@@ -89,7 +92,7 @@ public class MainSetup {
 		//p10.printGameStats();
 		
 		
-		//simSeason(t1, t2, p16);
+		//simSeason(t1, t2, p10);
 	      
 	      
 	}

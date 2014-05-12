@@ -15,7 +15,6 @@ public class Inning {
 		
 		System.out.println("Current Team at Bat: " + t.name);
 		while (outs < 3){
-			//runnersOnBase = RunnersOnBase.checkRunners(runnersOnBase);
 			/*
 			System.out.println("Outs: " + outs);
 			System.out.println("Runs: " + runsBatter[0]);
@@ -65,9 +64,10 @@ public class Inning {
 			
 			if (resultCode > 6){
 				if (resultCode == 7){
-					p1.SO++;
+					p1.gameSO++;
+					p1.gameAB++;
 				}
-				if (resultCode == 10 && run3b!=null && outs < 2){
+				else if (resultCode == 10 && run3b!=null && outs < 2){
 					double randomSacFly = Math.random();
 					if (randomSacFly < run3b.StealSuccP){
 						runsBatter[0]++;
@@ -78,53 +78,110 @@ public class Inning {
 					else {
 						outs++;
 						result = (result + " - " + run3b.name + " Thrown Out At Home");
+						p1.gameAB++;
 					}
 					run3b = null;
 				}
-				if (resultCode == 9 && outs < 2){
+				else if (resultCode == 9 && outs < 2){
 					if (run1b!=null && run2b!=null && run3b!=null){
-						result = (result + " - Double Play - " + run3b.name + " Out at Home");
-						run3b = null;					
-						run3b = run2b;
-						run2b = run1b;
-						run1b = null;
-						outs++;
+						double randomBeatOutDP = Math.random();
+						if (randomBeatOutDP < p1.StealSuccP){
+							result = (result + " - Fielder's Choice - " + run3b.name + " Out at Home");
+							run3b = null;					
+							run3b = run2b;
+							run2b = run1b;
+							run1b = p1;
+						}
+						else {
+							result = (result + " - Double Play - " + run3b.name + " Out at Home");
+							run3b = null;					
+							run3b = run2b;
+							run2b = run1b;
+							run1b = null;
+							outs++;
+							p1.gameAB++;
+						}
 					}				
 					else if (run1b!=null && run2b!=null) {
-						result = (result + " - Double Play - " + run2b.name + " Out at Third");
-						run2b = run1b;					
-						run1b = null;
-						outs++;
+							double randomBeatOutDP = Math.random();
+							if (randomBeatOutDP < p1.StealSuccP){
+								result = (result + " - Fielder's Choice - " + run2b.name + " Out at Third");					
+								run2b = run1b;
+								run1b = p1;
+							}
+							else{
+								result = (result + " - Double Play - " + run2b.name + " Out at Third");
+								run2b = run1b;					
+								run1b = null;
+								outs++;
+								p1.gameAB++;
+							}
 					}
 					else if (run2b!=null && run3b!=null){
 						run1b = p1;
+						p1.gameAB++;
 					}
 					else if (run1b!=null && run3b!=null) {
 						if (outs == 0){
-							result = (result + " - Double Play - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
-							run3b.gameR++;
-							p1.gameRBI++;
-							run3b = null;					
-							run1b = null;
-							outs++;
-							runsBatter[0]++;
+							double randomBeatOutDP = Math.random();
+							if (randomBeatOutDP < p1.StealSuccP){
+								result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
+								run3b.gameR++;
+								p1.gameRBI++;
+								run3b = null;
+								run1b = p1;
+								runsBatter[0]++;
+							}
+							else{
+								result = (result + " - Double Play - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
+								run3b.gameR++;
+								p1.gameRBI++;
+								run3b = null;					
+								run1b = null;
+								outs++;
+								runsBatter[0]++;
+								p1.gameAB++;
+							}
 						}
 					
 						else{
-							result = (result + " - Double Play - " + run1b.name + " Out at Second");
-							run3b = null;					
-							run1b = null;
-							outs++;
+							double randomBeatOutDP = Math.random();
+							if (randomBeatOutDP < p1.StealSuccP){
+								result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second - " + run3b.name + " Scored");	
+								run3b.gameR++;
+								p1.gameRBI++;
+								run3b = null;
+								run1b = p1;
+								runsBatter[0]++;
+							}
+							else{
+								result = (result + " - Double Play - " + run1b.name + " Out at Second");
+								run3b = null;					
+								run1b = null;
+								outs++;
+								p1.gameAB++;
+							}
 						}
 					}
 					else if (run1b!=null){
-						result = (result + " - Double Play - " + run1b.name + " Out at Second");
-						run1b = null;
-						outs++;
+						double randomBeatOutDP = Math.random();
+						if (randomBeatOutDP < p1.StealSuccP){
+							result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second");	
+							run1b = p1;
+						}
+						else{
+							result = (result + " - Double Play - " + run1b.name + " Out at Second");
+							run1b = null;
+							outs++;
+							p1.gameAB++;
+						}
 					}
+					else p1.gameAB++;
+				}
+				else if (resultCode == 9 || resultCode == 10){
+					p1.gameAB++;
 				}
 				outs++;
-				p1.gameAB++;
 			}
 			else if (resultCode == 1){		
 				if (run3b!=null){
