@@ -4,8 +4,8 @@ import java.text.DecimalFormat;
 
 public class Team {
 	String name;
-	Player P, C, FB, SB, TB, SS, LF, CF, RF;
-	Player[] battingOrder;
+	Player P, DH, C, FB, SB, TB, SS, LF, CF, RF;
+	Player[] battingOrder, pitchingRotation;
 	double G, W, L, RunsF, RunsA;
 
 		
@@ -13,8 +13,12 @@ public class Team {
 	      this.name = name;
 	   }
 	
-	public void tP(Player tP){
-	      P =  tP;
+	//public void tP(Player tP){
+	 //     P =  tP;
+	  // }
+	
+	public void tDH(Player tDH){
+	      DH =  tDH;
 	   }
 	
 	public void tC(Player tC){
@@ -54,6 +58,9 @@ public class Team {
 	      battingOrder =  tbattingOrder;
 	   }
 	
+	public void tpitchingRotation(Player[] tpitchingRotation){
+		pitchingRotation =  tpitchingRotation;
+	   }
 	
 	public void tG(double tG){
 	      G =  tG;
@@ -77,8 +84,9 @@ public class Team {
 		twoDForm.setMinimumFractionDigits(3);
 		
 	      System.out.println("Team Name: "+ name );
-	      /*System.out.println("P: "+ P.name );
-	      System.out.println("C: "+ C.name );
+	      //System.out.println("P: "+ P.name );
+	      System.out.println("DH: "+ DH.name );
+	      /*System.out.println("C: "+ C.name );
 	      System.out.println("1B: "+ FB.name );
 	      System.out.println("2B: "+ SB.name );
 	      System.out.println("3B: "+ TB.name );

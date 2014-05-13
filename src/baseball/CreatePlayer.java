@@ -169,7 +169,7 @@ public class CreatePlayer {
 
 		
 		Player p10 = new Player("Jose Reyes");
-		p10.ppos("SS");
+		p10.ppos("P");
 		p10.pG(1321);
 		p10.pPA(6058);
 		p10.pAB(5551);
@@ -186,6 +186,7 @@ public class CreatePlayer {
 		p10.pHBP(8);
 		p10.setStats();
 		//p10.printPlayer();
+		
 		
 		Player p11 = new Player("Jose Bautista");
 		p11.ppos("RF");
@@ -321,7 +322,7 @@ public class CreatePlayer {
 		//p17.printPlayer();
 		 	 	 	 	 	 	 	 	 	 	 	 	
 		Player p18 = new Player("Raul Modesi");
-		p18.ppos("P");
+		p18.ppos("DH");
 		p18.pG(1525);
 		p18.pPA(6369);
 		p18.pAB(5814);
@@ -337,19 +338,111 @@ public class CreatePlayer {
 		p18.pSO(1130);
 		p18.pHBP(41);
 		p18.setStats();
+		 	 	 	 	 	 	 	 	 
+		Player p19 = new Player("Clayton Kershaw");
+		p19.ppos("P");		
+		p19.ppIP(1200);
+		p19.ppER(345);
+		p19.ppK(1231);
+		p19.ppH(917);
+		p19.ppBB(394);
+		p19.ppHR(74);
+		p19.ppHBP(20);
+		p19.setPitchingStats();
 		
-		p18.ppIP(2929);
-		p18.ppER(1241);
-		p18.ppK(1689);
-		p18.ppH(3073);
-		p18.ppBB(667);
-		p18.ppHR(325);
-		p18.setPitchingStats();
-		//p18.printPlayer();
+		Player p20 = new Player("Mark Buehrle");
+		p20.ppIP(2929);
+		p20.ppER(1241);
+		p20.ppK(1689);
+		p20.ppH(3073);
+		p20.ppBB(667);
+		p20.ppHR(325);
+		p20.ppHBP(70);
+		p20.setPitchingStats();
+		
+		Player p21 = new Player("Esteban Loaiza");
+		p21.ppIP(2099);
+		p21.ppER(99);
+		p21.ppK(1382);
+		p21.ppH(2352);
+		p21.ppBB(604);
+		p21.ppHR(259);
+		p21.ppHBP(75);
+		p21.setPitchingStats();
+		
+		Player p22 = new Player("Chris Carpenter");
+		p22.ppIP(2219);
+		p22.ppER(927);
+		p22.ppK(1697);
+		p22.ppH(2205);
+		p22.ppBB(627);
+		p22.ppHR(220);
+		p22.ppHBP(85);
+		p22.setPitchingStats();
+		
+		Player p23 = new Player("A.J. Burnett");
+		p23.ppIP(2403);
+		p23.ppER(1059);
+		p23.ppK(2219);
+		p23.ppH(2183);
+		p23.ppBB(976);
+		p23.ppHR(237);
+		p23.ppHBP(121);
+		p23.setPitchingStats();
+		
+		Player p24 = new Player("Randy Johnson");
+		p24.ppIP(4135);
+		p24.ppER(1513);
+		p24.ppK(4875);
+		p24.ppH(3346);
+		p24.ppBB(1497);
+		p24.ppHR(411);
+		p24.ppHBP(190);
+		p24.setPitchingStats();
+		
+		Player p25 = new Player("Sandy Koufax");
+		p25.ppIP(2324);
+		p25.ppER(713);
+		p25.ppK(2396);
+		p25.ppH(1754);
+		p25.ppBB(817);
+		p25.ppHR(204);
+		p25.ppHBP(18);
+		p25.setPitchingStats();
+		
+		Player p26 = new Player("Kelvim Escobar");
+		p26.ppIP(1507);
+		p26.ppER(695);
+		p26.ppK(1310);
+		p26.ppH(1461);
+		p26.ppBB(611);
+		p26.ppHR(137);
+		p26.ppHBP(47);
+		p26.setPitchingStats();
+		
+		Player p27 = new Player("Ricky Romero");
+		p27.ppIP(801);
+		p27.ppER(370);
+		p27.ppK(622);
+		p27.ppH(766);
+		p27.ppBB(354);
+		p27.ppHR(82);
+		p27.ppHBP(43);
+		p27.setPitchingStats();
+		
+		Player p28 = new Player("Mark Prior");
+		p28.ppIP(657);
+		p28.ppER(256);
+		p28.ppK(757);
+		p28.ppH(582);
+		p28.ppBB(223);
+		p28.ppHR(77);
+		p28.ppHBP(31);
+		p28.setPitchingStats();
 		
 		
 		
-		Player[] playerArray = {p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18};
+		Player[] playerArray = {p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28};
 		return playerArray;
 
 	}

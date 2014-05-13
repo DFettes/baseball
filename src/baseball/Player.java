@@ -7,8 +7,10 @@ public class Player {
 	double singles, battingAVG, singleAVG, doubleAVG, tripleAVG, HRAVG, BBAVG, SOAVG, HBPAVG, OBP, SLG, OPS, TB, StealAttP, StealSuccP;
 	double gamePA, gameAB, gameR, gameH, gamesingles, gamedoubles, gametriples, gameHR, gameRBI, gameSB, gameCS, gameBB, gameSO, gameHBP;
 	double seasonPA, seasonAB, seasonR, seasonH, seasonsingles, seasondoubles, seasontriples, seasonHR, seasonRBI, seasonSB, seasonCS, seasonBB, seasonSO, seasonHBP, seasonBattingAVG, seasonOBP, seasonTB, seasonSLG, seasonOPS;
-	double pIP, pER, pK, pH, pBB, pHR, pERA, pWHIP, pK9, pH9, pBB9, pHR9;
-	double baseK9, baseH9, baseBB9, baseHR9, K9diff, H9diff, BB9diff, HR9diff;
+	double pIP, pER, pK, pH, pBB, pHR, pHBP, pERA, pWHIP, pK9, pH9, pBB9, pHBP9, pHR9;
+	double gamepIP, gamepER, gamepK, gamepH, gamepBB, gamepHBP, gamepHR, gamepERA, gamepWHIP, gamepK9, gamepH9, gamepBB9, gamepHR9;
+	double seasonpIP, seasonGS, seasonW, seasonL, seasonpER, seasonpK, seasonpH, seasonpBB, seasonpHBP, seasonpHR, seasonpERA, seasonpWHIP, seasonpK9, seasonpH9, seasonpBB9, seasonpHR9;
+	double baseK9, baseH9, baseBB9, baseHBP9, baseHR9, K9diff, H9diff, BB9diff, HBP9diff, HR9diff;
 	
 	public void setStats() {
 		if (PA > 0) {
@@ -45,23 +47,34 @@ public class Player {
 		pH9 = 9*pH/pIP;
 		pBB9 = 9*pBB/pIP;
 		pHR9 = 9*pHR/pIP;
+		pHBP9 = 9*pHBP/pIP;
 		
 		baseK9 = 7.6;
 		baseH9 = 8.7;
 		baseBB9 = 3.1;
 		baseHR9 = 1.0;
+		baseHBP9 = 0.3167;
 		
 		K9diff = pK9/baseK9;
 		H9diff = pH9/baseH9;
 		BB9diff = pBB9/baseBB9;
 		HR9diff = pHR9/baseHR9;
+		HBP9diff = pHBP9/baseHBP9;
+		
+		gamepIP=gamepER=gamepK=gamepH=gamepBB=gameHBP=gamepHR=gamepERA=gamepWHIP=gamepK9=gamepH9=gamepBB9=gamepHR9 = 0;
+		seasonpIP=seasonGS=seasonW=seasonL=seasonpER=seasonpK=seasonpH=seasonpBB=gameHBP=seasonpHR=seasonpERA=seasonpWHIP=seasonpK9=seasonpH9=seasonpBB9=seasonpHR9 = 0;
+	}
+	
+	public void setSeasonPitchingStats() {
+		seasonpERA = 9*seasonpER/seasonpIP;
+		seasonpWHIP = (seasonpBB + seasonpH)/seasonpIP;
+		seasonpK9 = 9*seasonpK/seasonpIP;
+		seasonpH9 = 9*seasonpH/seasonpIP;
+		seasonpBB9 = 9*seasonpBB/seasonpIP;
+		seasonpHR9 = 9*seasonpHR/seasonpIP;
 	}
 	
 	public void setAdjStats() {
-		/*K9 diff: 2.4101741208603613
-		H9 diff: 0.7424718333902369
-		BB9 diff: -1.0504950495049505
-		HR9 diff: -0.0013656538067600144*/
 
 		singleAVG = singleAVG*H9diff;
 		doubleAVG = doubleAVG*H9diff;
@@ -168,6 +181,10 @@ public class Player {
 	
 	public void ppHR(double ppHR){
 		pHR =  ppHR;
+	   }
+	
+	public void ppHBP(double ppHBP){
+		pHBP =  ppHBP;
 	   }
 	
 	

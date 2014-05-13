@@ -2,7 +2,7 @@ package baseball;
 
 public class Inning {
 	
-	public static int[] NewInning(Team t, int BatterUp){
+	public static int[] NewInning(Team t1, Team t2, int BatterUp, int pitcher){
 		String[] results = {"Singled", "Doubled", "Tripled", "Homered!", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flew Out"};
 		int outs = 0; 
 		int[] runsBatter = {0, BatterUp};
@@ -11,7 +11,7 @@ public class Inning {
 		Player run3b = null;
 		
 		
-		System.out.println("AT BAT: " + t.name);
+		System.out.println("AT BAT: " + t1.name);
 		while (outs < 3){
 			String runResult = null;
 			/*
@@ -56,8 +56,9 @@ public class Inning {
 				}
 			}
 			
-			Player p1 = t.battingOrder[BatterUp];
-			int resultCode = AtBat.NewAtBat(p1);
+			Player p1 = t1.battingOrder[BatterUp];
+			Player p2 = t2.pitchingRotation[pitcher];
+			int resultCode = AtBat.NewAtBat(p1, p2);
 			String result = (p1.name + " " + results[resultCode-1]);
 			//System.out.println();
 			
@@ -65,6 +66,7 @@ public class Inning {
 				if (resultCode == 7){
 					p1.gameSO++;
 					p1.gameAB++;
+					t2.pitchingRotation[pitcher].gamepK++;
 				}
 				else if (resultCode == 10 && run3b!=null && outs < 2){
 					double randomSacFly = Math.random();
@@ -73,6 +75,7 @@ public class Inning {
 						result = (result + " - " + run3b.name + " Scored on Sacrifice Fly");
 						run3b.gameR++;
 						p1.gameRBI++;
+						t2.pitchingRotation[pitcher].gamepER++;
 					}
 					else {
 						outs++;
@@ -133,6 +136,7 @@ public class Inning {
 								run1b = p1;
 								runsBatter[0]++;
 								p1.gameAB++;
+								t2.pitchingRotation[pitcher].gamepER++;
 							}
 							else{
 								result = (p1.name + " Grounded Into Double Play - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
@@ -143,6 +147,7 @@ public class Inning {
 								outs++;
 								runsBatter[0]++;
 								p1.gameAB++;
+								t2.pitchingRotation[pitcher].gamepER++;
 							}
 						}
 					
@@ -156,6 +161,7 @@ public class Inning {
 								run1b = p1;
 								runsBatter[0]++;
 								p1.gameAB++;
+								t2.pitchingRotation[pitcher].gamepER++;
 							}
 							else{
 								result = (p1.name + " Grounded Into Double Play - " + run1b.name + " Out at Second");
@@ -194,6 +200,7 @@ public class Inning {
 					p1.gameRBI++;
 					run3b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run2b!=null){
 					int outcome = RunningRolls.RunFrom2nd(run2b);
@@ -202,6 +209,7 @@ public class Inning {
 						run2b.gameR++;
 						p1.gameRBI++;
 						runsBatter[0]++;
+						t2.pitchingRotation[pitcher].gamepER++;
 					}
 					else if (outcome == 2){
 						result = (result + " - " + run2b.name + " Thrown Out At Home");
@@ -222,6 +230,7 @@ public class Inning {
 				run1b = p1;
 				p1.gamesingles++;
 				p1.gameAB++;
+				t2.pitchingRotation[pitcher].gamepH++;
 			}
 			
 			else if (resultCode == 2){		
@@ -231,6 +240,7 @@ public class Inning {
 					p1.gameRBI++;
 					run3b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run2b!=null){
 					result = (result + " - " + run2b.name + " Scored");
@@ -238,6 +248,7 @@ public class Inning {
 					p1.gameRBI++;
 					run2b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run1b!=null){
 					int outcome = RunningRolls.RunFrom2nd(run1b);
@@ -246,6 +257,7 @@ public class Inning {
 						run1b.gameR++;
 						p1.gameRBI++;
 						runsBatter[0]++;
+						t2.pitchingRotation[pitcher].gamepER++;
 					}
 					else if (outcome == 2){
 						result = (result + " - " + run1b.name + " Thrown Out At Home");
@@ -260,6 +272,7 @@ public class Inning {
 				run2b = p1;
 				p1.gamedoubles++;
 				p1.gameAB++;
+				t2.pitchingRotation[pitcher].gamepH++;
 			}
 			
 			
@@ -270,6 +283,7 @@ public class Inning {
 					p1.gameRBI++;
 					run3b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run2b!=null){
 					result = (result + " - " + run2b.name + " Scored");
@@ -277,6 +291,7 @@ public class Inning {
 					p1.gameRBI++;
 					run2b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run1b!=null){
 					result = (result + " - " + run1b.name + " Scored");
@@ -284,10 +299,12 @@ public class Inning {
 					p1.gameRBI++;
 					run1b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				run3b = p1;
 				p1.gametriples++;
 				p1.gameAB++;
+				t2.pitchingRotation[pitcher].gamepH++;
 			}
 			
 			
@@ -298,6 +315,7 @@ public class Inning {
 					p1.gameRBI++;
 					run3b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run2b!=null){
 					result = (result + " - " + run2b.name + " Scored");
@@ -305,6 +323,7 @@ public class Inning {
 					p1.gameRBI++;
 					run2b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				if (run1b!=null){
 					result = (result + " - " + run1b.name + " Scored");
@@ -312,6 +331,7 @@ public class Inning {
 					p1.gameRBI++;
 					run1b = null;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}
 				result = (result + " - " + p1.name + " Scored");
 				p1.gameR++;
@@ -319,15 +339,22 @@ public class Inning {
 				runsBatter[0]++;
 				p1.gameHR++;
 				p1.gameAB++;
+				t2.pitchingRotation[pitcher].gamepER++;
+				t2.pitchingRotation[pitcher].gamepH++;
+				t2.pitchingRotation[pitcher].gamepHR++;
 			}
 			
 			
 			else if (resultCode == 5 || resultCode == 6){
 				if (resultCode ==5){
 					p1.gameBB++;
+					t2.pitchingRotation[pitcher].gamepBB++;
 				}
-				else p1.gameHBP++;
-				
+				else {
+					p1.gameHBP++;
+					t2.pitchingRotation[pitcher].gamepHBP++;
+				}
+						
 				if (run1b!=null && run2b!=null && run3b!=null){
 					result = (result + " - " + run3b.name + " Scored");
 					result = (result + " - " + run2b.name + " To Third");
@@ -338,6 +365,7 @@ public class Inning {
 					run2b = run1b;
 					run1b = p1;
 					runsBatter[0]++;
+					t2.pitchingRotation[pitcher].gamepER++;
 				}				
 				else if (run1b!=null && run2b!=null) {
 					result = (result + " - " + run2b.name + " To Third");
@@ -376,7 +404,7 @@ public class Inning {
 		}
 		System.out.println();
 		//System.out.println("3 Outs, inning over");
-		runsBatter[1] = BatterUp ;
+		runsBatter[1] = BatterUp;
 		return runsBatter;
 	}
 	
