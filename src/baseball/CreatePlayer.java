@@ -150,7 +150,7 @@ public class CreatePlayer {
 		p8.setStats();
 		 	 	 	 	 	 	 	 	 	 	 	 	
 		Player p9 = new Player("Don Mattingly");
-		p9.ppos("DH");
+		p9.ppos("P");
 		p9.pG(1785);
 		p9.pPA(7722);
 		p9.pAB(7003);
@@ -321,7 +321,7 @@ public class CreatePlayer {
 		//p17.printPlayer();
 		 	 	 	 	 	 	 	 	 	 	 	 	
 		Player p18 = new Player("Raul Modesi");
-		p18.ppos("DH");
+		p18.ppos("P");
 		p18.pG(1525);
 		p18.pPA(6369);
 		p18.pAB(5814);
@@ -337,6 +337,14 @@ public class CreatePlayer {
 		p18.pSO(1130);
 		p18.pHBP(41);
 		p18.setStats();
+		
+		p18.ppIP(2929);
+		p18.ppER(1241);
+		p18.ppK(1689);
+		p18.ppH(3073);
+		p18.ppBB(667);
+		p18.ppHR(325);
+		p18.setPitchingStats();
 		//p18.printPlayer();
 		
 		
@@ -344,84 +352,6 @@ public class CreatePlayer {
 		Player[] playerArray = {p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18};
 		return playerArray;
 
-		/*double samplehits = 0;
-		double sampleAB = 0;
-		double samplePA = 0;
-		double sample1b = 0;
-		double sample2b = 0;
-		double sample3b = 0;
-		double sampleHR = 0;
-		double sampleBB = 0;
-		double sampleSO = 0;
-		double sampleHBP = 0;
-		double sampleTB = 0;
-		
-		//for (int i=0; i<739; i++){
-			
-			
-			
-			//System.out.println(result);
-			
-			
-			if (result == "Single"){
-				sample1b++;	
-				samplehits++;
-				sampleAB++;
-				sampleTB++;
-			}
-			if (result == "Double"){
-				sample2b++;	
-				samplehits++;
-				sampleAB++;
-				sampleTB+=2;
-			}
-			if (result == "Triple"){
-				sample3b++;	
-				samplehits++;
-				sampleAB++;
-				sampleTB+=3;
-			}
-			if (result == "HOME RUN!"){
-				sampleHR++;
-				samplehits++;
-				sampleAB++;
-				sampleTB+=4;
-			}
-			if (result == "Walk"){
-				sampleBB++;				
-			}
-			if (result == "Hit By Pitch"){
-				sampleHBP++;				
-			}
-			if (result == "Strikeout"){
-				sampleSO++;
-				sampleAB++;
-			}
-			if (result == "Out"){
-				sampleAB++;
-			}
-			samplePA++;
-			
-		}
-		
-		System.out.println("Hits: " + samplehits);
-		System.out.println("Doubles Hit: " + sample2b);
-		System.out.println("Triples Hit: " + sample3b);
-		System.out.println("Home Runs Hit: " + sampleHR);
-		System.out.println("Times Walked: " + sampleBB);
-		System.out.println("Times Struk Out: " + sampleSO);
-		System.out.println("Time Hit By Pitch: " + sampleHBP);
-		
-		double sampleAVG = samplehits/sampleAB; 
-		double sampleOBP = (samplehits + sampleBB + sampleHBP) / samplePA;
-		double sampleSLG = sampleTB/sampleAB; 
-		double sampleOPS = sampleOBP + sampleSLG; 
-		
-		System.out.println("AVG: " + sampleAVG);
-		System.out.println("OBP: " + sampleOBP);
-		System.out.println("SLG: " + sampleSLG);
-		System.out.println("OPS: " + sampleOPS);
-		*/
 	}
 }
 

@@ -30,14 +30,14 @@ public class Game {
 		int batterUp2 = 0;
 		
 		while (inning < 10 || team1Score == team2Score){
-			System.out.println("Top of Inning " + inning);
+			System.out.println("TOP OF INNING " + inning);
 			int[] inningArray1 = Inning.NewInning(team1, batterUp1);
 			int score1Inc = inningArray1[0];
 			team1Score += score1Inc;
 			batterUp1 = inningArray1[1];
 			
 			if (inning > 8 && team1Score >= team2Score){
-				System.out.println("Bottom of Inning " + inning);
+				System.out.println("BOTTOM OF INNING " + inning);
 				int[] inningArray2 = Inning.NewInning(team2, batterUp2);			
 				int score2Inc = inningArray2[0];			
 				team2Score += score2Inc;			
@@ -47,13 +47,13 @@ public class Game {
 				
 			}
 			else{
-				System.out.println("Bottom of Inning " + inning);
+				System.out.println("BOTTOM OF INNING " + inning);
 				int[] inningArray2 = Inning.NewInning(team2, batterUp2);			
 				int score2Inc = inningArray2[0];			
 				team2Score += score2Inc;			
 				batterUp2 = inningArray2[1];
 			}
-			System.out.println("End of Inning " + inning);
+			System.out.println("END OF INNING " + inning);
 			System.out.println(team1.name + ": " + team1Score);
 			System.out.println(team2.name + ": " + team2Score);
 			System.out.println();
@@ -70,8 +70,15 @@ public class Game {
 			team2.W++;
 			team1.L++;
 		}
+		team1.G++;
+		team2.G++;
+		team1.RunsF+=team1Score;
+		team1.RunsA+=team2Score;
+		team2.RunsF+=team2Score;
+		team2.RunsA+=team1Score;
+		
 		System.out.println();
-		PrintBoxScore(team1, team2);
+		//PrintBoxScore(team1, team2);
 	}
 
 }

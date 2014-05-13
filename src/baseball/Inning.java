@@ -11,7 +11,7 @@ public class Inning {
 		Player run3b = null;
 		
 		
-		System.out.println("At Bat: " + t.name);
+		System.out.println("AT BAT: " + t.name);
 		while (outs < 3){
 			String runResult = null;
 			/*
@@ -207,10 +207,15 @@ public class Inning {
 						result = (result + " - " + run2b.name + " Thrown Out At Home");
 						outs++;
 					}
-					else run3b = run2b;		
+					else {
+						result = (result + " - " + run2b.name + " To Third");
+						run3b = run2b;
+						
+					}
 					run2b = null;
 				}
 				if (run1b!=null){
+					result = (result + " - " + run1b.name + " To Second");
 					run2b = run1b;
 					run1b = null;
 				}
@@ -246,7 +251,10 @@ public class Inning {
 						result = (result + " - " + run1b.name + " Thrown Out At Home");
 						outs++;
 					}
-					else run3b = run1b;		
+					else {
+						result = (result + " - " + run1b.name + " To Third");
+						run3b = run1b;		
+					}
 					run1b = null;
 				}
 				run2b = p1;
@@ -322,6 +330,8 @@ public class Inning {
 				
 				if (run1b!=null && run2b!=null && run3b!=null){
 					result = (result + " - " + run3b.name + " Scored");
+					result = (result + " - " + run2b.name + " To Third");
+					result = (result + " - " + run1b.name + " To Second");
 					run3b.gameR++;
 					p1.gameRBI++;
 					run3b = run2b;
@@ -330,6 +340,8 @@ public class Inning {
 					runsBatter[0]++;
 				}				
 				else if (run1b!=null && run2b!=null) {
+					result = (result + " - " + run2b.name + " To Third");
+					result = (result + " - " + run1b.name + " To Second");
 					run3b = run2b;
 					run2b = run1b;
 					run1b = p1;
@@ -338,10 +350,12 @@ public class Inning {
 					run1b = p1;
 				}
 				else if (run1b!=null && run3b!=null) {
+					result = (result + " - " + run1b.name + " To Second");
 					run2b = run1b;
 					run1b = p1;
 				}
 				else if (run1b!=null){
+					result = (result + " - " + run1b.name + " To Second");
 					run2b = run1b;
 					run1b = p1;
 				}

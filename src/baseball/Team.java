@@ -1,10 +1,12 @@
 package baseball;
 
+import java.text.DecimalFormat;
+
 public class Team {
 	String name;
 	Player P, C, FB, SB, TB, SS, LF, CF, RF;
 	Player[] battingOrder;
-	double G, W, L;
+	double G, W, L, RunsF, RunsA;
 
 		
 	public Team(String name){
@@ -68,8 +70,14 @@ public class Team {
 	
 	
 	public void printTeam(){
+		DecimalFormat twoDForm = new DecimalFormat();
+		twoDForm.setMaximumIntegerDigits(1);
+		twoDForm.setMinimumIntegerDigits(0);
+		twoDForm.setMaximumFractionDigits(3);
+		twoDForm.setMinimumFractionDigits(3);
+		
 	      System.out.println("Team Name: "+ name );
-	      System.out.println("P: "+ P.name );
+	      /*System.out.println("P: "+ P.name );
 	      System.out.println("C: "+ C.name );
 	      System.out.println("1B: "+ FB.name );
 	      System.out.println("2B: "+ SB.name );
@@ -78,9 +86,11 @@ public class Team {
 	      System.out.println("LF: "+ LF.name );
 	      System.out.println("CF: "+ CF.name );
 	      System.out.println("RF: "+ RF.name );
-	      
-	      System.out.println("Wins: "+ W );
-	      System.out.println("Losses: "+ L );
+	      */
+	      System.out.println("Wins: " + (int)W );
+	      System.out.println("Losses: " + (int)L );
+	      System.out.println("Runs For Per Game: " + twoDForm.format(RunsF/G) );
+	      System.out.println("Runs Against Per Game: " + twoDForm.format(RunsA/G) );
 	   }
 
 }

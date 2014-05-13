@@ -6,8 +6,6 @@ public class MainSetup {
 	
 	public static void simSeason(Team t1, Team t2){
 		
-		//DecimalFormat twoDForm = new DecimalFormat(".###");
-		
 		DecimalFormat twoDForm = new DecimalFormat();
 		twoDForm.setMaximumIntegerDigits(1);
 		twoDForm.setMinimumIntegerDigits(0);
@@ -80,8 +78,8 @@ public class MainSetup {
 		}
 
 		System.out.println();
-	    System.out.println(t1.name + " Wins: " + t1.W);
-	    System.out.println(t2.name + " Wins: " + t2.W);
+	    t1.printTeam();
+	    //System.out.println(t2.name + " Wins: " + t2.W);
 	}
 	
 	
@@ -112,11 +110,13 @@ public class MainSetup {
 		Team t1 = CreateTeam.NewTeam("Blue Jays", p10,p12,p11,p13,p16,p18,p14,p15,p17);
 		Team t2 = CreateTeam.NewTeam("Legends", p4,p3,p5,p2,p8,p1,p9,p6,p7);
 		
+		p18.printPlayer();
+		p18.setAdjStats();
 		
 		
 		//p10.printGameStats();
 		
-		Game.NewGame(t1, t2);
+		//Game.NewGame(t1, t2);
 		//simSeason(t1, t2);
 	      
 	      
