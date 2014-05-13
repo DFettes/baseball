@@ -109,7 +109,7 @@ public class Game {
 		team2.RunsA+=team1Score;
 		
 		System.out.println();
-		//PrintBoxScore(team1, team2, pitcher1, pitcher2);
+		PrintBoxScore(team1, team2, pitcher1, pitcher2);
 	}
 
 }
