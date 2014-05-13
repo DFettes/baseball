@@ -3,18 +3,17 @@ package baseball;
 public class Inning {
 	
 	public static int[] NewInning(Team t, int BatterUp){
-		String[] results = {"Single", "Double", "Triple", "HOME RUN!", "Walk", "Hit By Pitch", "Strikeout", "Out", "Ground Out", "Fly Out"};
+		String[] results = {"Singled", "Doubled", "Tripled", "Homered!", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flew Out"};
 		int outs = 0; 
 		int[] runsBatter = {0, BatterUp};
 		Player run1b = null;
 		Player run2b = null;
 		Player run3b = null;
-		Player[] runnersOnBase = {null, null, null};
-		//Team inningTeam = t;
 		
 		
-		System.out.println("Current Team at Bat: " + t.name);
+		System.out.println("At Bat: " + t.name);
 		while (outs < 3){
+			String runResult = null;
 			/*
 			System.out.println("Outs: " + outs);
 			System.out.println("Runs: " + runsBatter[0]);
@@ -28,13 +27,13 @@ public class Inning {
 			if (run1b!=null && run2b==null){
 				int outcome = RunningRolls.Run(run1b, 1);
 				if (outcome == 1){
-					System.out.println("RUNNER: " + run1b.name + " Stole Second Base!");
+					runResult = run1b.name + " Stole Second Base!";
 					run1b.gameSB++;
 					run2b = run1b;
 					run1b = null;
 				}
 				else if (outcome == 2){
-					System.out.println("RUNNER: " + run1b.name + " Caught Stealing Second Base!");
+					runResult= run1b.name + " Caught Stealing Second Base!";
 					run1b.gameCS++;
 					run1b = null;
 					outs++;
@@ -44,13 +43,13 @@ public class Inning {
 			if (run2b!=null && run3b==null && outs < 2){
 				int outcome = RunningRolls.Run(run2b, 2);
 				if (outcome == 1){
-					System.out.println("RUNNER: " + run2b.name + " Stole Third Base!");
+					runResult = run2b.name + " Stole Third Base!";
 					run2b.gameSB++;
 					run3b = run2b;
 					run2b = null;
 				}
 				else if (outcome == 2){
-					System.out.println("RUNNER: " + run2b.name + " Caught Stealing Third Base!");
+					runResult = run2b.name + " Caught Stealing Third Base!";
 					run2b.gameCS++;
 					run2b = null;
 					outs++;
@@ -59,7 +58,7 @@ public class Inning {
 			
 			Player p1 = t.battingOrder[BatterUp];
 			int resultCode = AtBat.NewAtBat(p1);
-			String result = ("BATTER: " + p1.name + " RESULT: " + results[resultCode-1]);
+			String result = (p1.name + " " + results[resultCode-1]);
 			//System.out.println();
 			
 			if (resultCode > 6){
@@ -86,7 +85,7 @@ public class Inning {
 					if (run1b!=null && run2b!=null && run3b!=null){
 						double randomBeatOutDP = Math.random();
 						if (randomBeatOutDP < p1.StealSuccP){
-							result = (result + " - Fielder's Choice - " + run3b.name + " Out at Home");
+							result = (p1.name + " Grounded Into Fielder's Choice - " + run3b.name + " Out at Home");
 							run3b = null;					
 							run3b = run2b;
 							run2b = run1b;
@@ -94,7 +93,7 @@ public class Inning {
 							p1.gameAB++;
 						}
 						else {
-							result = (result + " - Double Play - " + run3b.name + " Out at Home");
+							result = (p1.name + " Grounded Into Double Play - " + run3b.name + " Out at Home");
 							run3b = null;					
 							run3b = run2b;
 							run2b = run1b;
@@ -106,13 +105,13 @@ public class Inning {
 					else if (run1b!=null && run2b!=null) {
 							double randomBeatOutDP = Math.random();
 							if (randomBeatOutDP < p1.StealSuccP){
-								result = (result + " - Fielder's Choice - " + run2b.name + " Out at Third");					
+								result = (p1.name + " Grounded Into Fielder's Choice - " + run2b.name + " Out at Third");					
 								run2b = run1b;
 								run1b = p1;
 								p1.gameAB++;
 							}
 							else{
-								result = (result + " - Double Play - " + run2b.name + " Out at Third");
+								result = (p1.name + " Grounded Into Double Play - " + run2b.name + " Out at Third");
 								run2b = run1b;					
 								run1b = null;
 								outs++;
@@ -127,7 +126,7 @@ public class Inning {
 						if (outs == 0){
 							double randomBeatOutDP = Math.random();
 							if (randomBeatOutDP < p1.StealSuccP){
-								result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
+								result = (p1.name + " Grounded Into Fielder's Choice - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
 								run3b.gameR++;
 								p1.gameRBI++;
 								run3b = null;
@@ -136,7 +135,7 @@ public class Inning {
 								p1.gameAB++;
 							}
 							else{
-								result = (result + " - Double Play - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
+								result = (p1.name + " Grounded Into Double Play - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
 								run3b.gameR++;
 								p1.gameRBI++;
 								run3b = null;					
@@ -150,7 +149,7 @@ public class Inning {
 						else{
 							double randomBeatOutDP = Math.random();
 							if (randomBeatOutDP < p1.StealSuccP){
-								result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second - " + run3b.name + " Scored");	
+								result = (p1.name + " Grounded Into Fielder's Choice - " + run1b.name + " Out at Second - " + run3b.name + " Scored");	
 								run3b.gameR++;
 								p1.gameRBI++;
 								run3b = null;
@@ -159,7 +158,7 @@ public class Inning {
 								p1.gameAB++;
 							}
 							else{
-								result = (result + " - Double Play - " + run1b.name + " Out at Second");
+								result = (p1.name + " Grounded Into Double Play - " + run1b.name + " Out at Second");
 								run3b = null;					
 								run1b = null;
 								outs++;
@@ -170,12 +169,12 @@ public class Inning {
 					else if (run1b!=null){
 						double randomBeatOutDP = Math.random();
 						if (randomBeatOutDP < p1.StealSuccP){
-							result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second");	
+							result = (p1.name + " Grounded Into Fielder's Choice - " + run1b.name + " Out at Second");	
 							run1b = p1;
 							p1.gameAB++;
 						}
 						else{
-							result = (result + " - Double Play - " + run1b.name + " Out at Second");
+							result = (p1.name + " Grounded Into Double Play - " + run1b.name + " Out at Second");
 							run1b = null;
 							outs++;
 							p1.gameAB++;
@@ -354,11 +353,10 @@ public class Inning {
 			if (BatterUp == 9){
 				BatterUp = 0;
 			}
-			
+			if (runResult != null){
+				System.out.println(runResult);
+			}		
 			System.out.println(result);
-			runnersOnBase[0] = run1b;
-			runnersOnBase[1] = run2b;
-			runnersOnBase[2] = run3b;
 			
 			p1.gamePA++;
 		}

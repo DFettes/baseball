@@ -4,75 +4,13 @@ import java.text.DecimalFormat;
 
 public class MainSetup {
 	
-	
-	public static void simSeason(Team t1, Team t2, Player p){
-		double seasonG, seasonPA, seasonAB, seasonR, seasonH, seasonsingles, seasondoubles, seasontriples, seasonHR, seasonRBI, seasonSB, seasonCS, seasonBB, seasonSO, seasonHBP;
-		double battingAVG, OBP, TB, SLG, OPS;
-		seasonG=seasonPA=seasonAB=seasonR=seasonH=seasonsingles=seasondoubles=seasontriples=seasonHR=seasonRBI=seasonSB=seasonCS=seasonBB=seasonSO=seasonHBP=0;
-		for (int games = 0; games <162; games++){
-			p.gamePA=p.gameAB=p.gameR=p.gameH=p.gamesingles=p.gamedoubles=p.gametriples=p.gameHR=p.gameRBI=p.gameSB=p.gameCS=p.gameBB=p.gameSO=p.gameHBP=0;
-			Game.NewGame(t1, t2);
-			p.printGameStats();
-			seasonG++;
-			seasonPA+=p.gamePA;
-			seasonAB+=p.gameAB;
-			seasonR+=p.gameR;
-			seasonH+=p.gameH;
-			seasonsingles+=p.gamesingles;
-			seasondoubles+=p.gamedoubles;
-			seasontriples+=p.gametriples;
-			seasonHR+=p.gameHR;
-			seasonRBI+=p.gameRBI;
-			seasonSB+=p.gameSB;
-			seasonCS+=p.gameCS;
-			seasonBB+=p.gameBB;
-			seasonSO+=p.gameSO;
-			seasonHBP+=p.gameHBP;
-		}
-		battingAVG = seasonH/seasonAB;
-		OBP = (seasonH + seasonBB + seasonHBP)/seasonPA;
-		TB = seasonsingles + 2*seasondoubles + 3*seasontriples + 4*seasonHR;
-		SLG = TB/seasonAB;
-		OPS = OBP + SLG;
-		
-		System.out.println();
-		
-		System.out.println("Name: "+ p.name );
-	      System.out.println("Position: " + p.pos );
-	      System.out.println("G: " + seasonG);
-	      System.out.println("PA: " + seasonPA);
-	      System.out.println("AB: " + seasonAB);
-	      System.out.println("R: " + seasonR);
-	      System.out.println("H: " + seasonH);
-	      System.out.println("1B: " + seasonsingles);
-	      System.out.println("2B: " + seasondoubles);
-	      System.out.println("3B: " + seasontriples);
-	      System.out.println("HR: " + seasonHR);
-	      System.out.println("RBI: " + seasonRBI);
-	      System.out.println("SB: " + seasonSB);
-	      System.out.println("CS: " + seasonCS);
-	      System.out.println("BB: " + seasonBB);
-	      System.out.println("SO: " + seasonSO);
-	      System.out.println("HBP: " + seasonHBP);
-	      System.out.println();
-	      System.out.println("AVG: " + battingAVG);
-	      System.out.println("OBP: " + OBP);
-	      System.out.println("SLG: " + SLG);
-	      System.out.println("OPS: " + OPS);
-	      System.out.println();
-	      //t1.printTeam();
-	      System.out.println("Team 1 Wins: " + t1.W);
-	      System.out.println("Team 2 Wins: " + t2.W);
-	}
-
-	
-	
-	public static void simSeason2(Team t1, Team t2){
+	public static void simSeason(Team t1, Team t2){
 		
 		//DecimalFormat twoDForm = new DecimalFormat(".###");
 		
 		DecimalFormat twoDForm = new DecimalFormat();
 		twoDForm.setMaximumIntegerDigits(1);
+		twoDForm.setMinimumIntegerDigits(0);
 		twoDForm.setMaximumFractionDigits(3);
 		twoDForm.setMinimumFractionDigits(3);
 
@@ -142,9 +80,12 @@ public class MainSetup {
 		}
 
 		System.out.println();
-	    System.out.println("Team 1 Wins: " + t1.W);
-	    System.out.println("Team 2 Wins: " + t2.W);
+	    System.out.println(t1.name + " Wins: " + t1.W);
+	    System.out.println(t2.name + " Wins: " + t2.W);
 	}
+	
+	
+	
 	
 	public static void main(String[] args) {
 		Player[] playerArray = CreatePlayer.CreatePlayers();
@@ -170,12 +111,13 @@ public class MainSetup {
 		
 		Team t1 = CreateTeam.NewTeam("Blue Jays", p10,p12,p11,p13,p16,p18,p14,p15,p17);
 		Team t2 = CreateTeam.NewTeam("Legends", p4,p3,p5,p2,p8,p1,p9,p6,p7);
-		//Game.NewGame(t1, t2);
+		
+		
 		
 		//p10.printGameStats();
 		
-		
-		simSeason2(t1, t2);
+		Game.NewGame(t1, t2);
+		//simSeason(t1, t2);
 	      
 	      
 	}
