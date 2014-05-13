@@ -42,26 +42,35 @@ public class Game {
 		
 		while (inning < 10 || team1Score == team2Score){
 			System.out.println("TOP OF INNING " + inning);
-			int[] inningArray1 = Inning.NewInning(team1, team2, batterUp1, pitcher2);
+			int[] inningArray1 = Inning.NewInning(team1, team2, batterUp1, pitcher2, false, 0);
 			int score1Inc = inningArray1[0];
 			team1Score += score1Inc;
 			batterUp1 = inningArray1[1];
 			team2.pitchingRotation[pitcher2].gamepIP++;
 			
 			if (inning > 8 && team1Score >= team2Score){
+				System.out.println(team1.name + ": " + team1Score);
+				System.out.println(team2.name + ": " + team2Score);
+				System.out.println();
+				
+				int homeDef = team1Score-team2Score;
 				System.out.println("BOTTOM OF INNING " + inning);
-				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, pitcher1);			
+				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, pitcher1, true, homeDef);			
 				int score2Inc = inningArray2[0];			
 				team2Score += score2Inc;			
 				batterUp2 = inningArray2[1];
 				team1.pitchingRotation[pitcher1].gamepIP++;
 			}
 			else if (inning > 8 && team1Score < team2Score){
-				
+				//home team doesn't need at bats, game over
 			}
 			else{
+				System.out.println(team1.name + ": " + team1Score);
+				System.out.println(team2.name + ": " + team2Score);
+				System.out.println();
+				
 				System.out.println("BOTTOM OF INNING " + inning);
-				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, pitcher1);			
+				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, pitcher1, false, 0);			
 				int score2Inc = inningArray2[0];			
 				team2Score += score2Inc;			
 				batterUp2 = inningArray2[1];
@@ -100,7 +109,7 @@ public class Game {
 		team2.RunsA+=team1Score;
 		
 		System.out.println();
-		PrintBoxScore(team1, team2, pitcher1, pitcher2);
+		//PrintBoxScore(team1, team2, pitcher1, pitcher2);
 	}
 
 }

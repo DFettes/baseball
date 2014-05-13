@@ -2,7 +2,7 @@ package baseball;
 
 public class Inning {
 	
-	public static int[] NewInning(Team t1, Team t2, int BatterUp, int pitcher){
+	public static int[] NewInning(Team t1, Team t2, int BatterUp, int pitcher, boolean homeChance, int homeDef){
 		String[] results = {"Singled", "Doubled", "Tripled", "Homered!", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flew Out"};
 		int outs = 0; 
 		int[] runsBatter = {0, BatterUp};
@@ -401,6 +401,9 @@ public class Inning {
 			System.out.println(result);
 			
 			p1.gamePA++;
+			if (homeChance && (runsBatter[0]>homeDef)){
+				outs=3;
+			}
 		}
 		System.out.println();
 		//System.out.println("3 Outs, inning over");

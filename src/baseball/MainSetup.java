@@ -170,10 +170,10 @@ public class MainSetup {
 		Player p27 = playerArray[26];
 		Player p28 = playerArray[27];
 		
-		Player[] t1PRot = {p19,p20,p24,p22,p21};
-		Player[] t2PRot = {p25,p23,p28,p26,p27};
+		Player[] t1PRot = {p19,p22,p20,p24,p27};
+		Player[] t2PRot = {p25,p23,p28,p26,p21};
 		
-		Team t1 = CreateTeam.NewTeam("Blue Jays", t1PRot,p10,p12,p11,p13,p16,p18,p14,p15,p17);
+		Team t1 = CreateTeam.NewTeam("Blue Jays", t1PRot, p10,p12,p11,p13,p16,p18,p14,p15,p17);
 		Team t2 = CreateTeam.NewTeam("Legends", t2PRot, p4,p3,p5,p2,p8,p1,p9,p6,p7);
 		
 		//p10.printPlayer();
