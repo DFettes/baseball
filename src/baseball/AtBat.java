@@ -26,7 +26,7 @@ public class AtBat {
 		}
 		if (resultCode == 8){
 			double randomOut = Math.random();
-			if (randomOut < 0.5){
+			if (randomOut < 0.53){
 				resultCode = 9;
 			}
 			else resultCode = 10;

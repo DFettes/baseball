@@ -91,6 +91,7 @@ public class Inning {
 							run3b = run2b;
 							run2b = run1b;
 							run1b = p1;
+							p1.gameAB++;
 						}
 						else {
 							result = (result + " - Double Play - " + run3b.name + " Out at Home");
@@ -108,6 +109,7 @@ public class Inning {
 								result = (result + " - Fielder's Choice - " + run2b.name + " Out at Third");					
 								run2b = run1b;
 								run1b = p1;
+								p1.gameAB++;
 							}
 							else{
 								result = (result + " - Double Play - " + run2b.name + " Out at Third");
@@ -131,6 +133,7 @@ public class Inning {
 								run3b = null;
 								run1b = p1;
 								runsBatter[0]++;
+								p1.gameAB++;
 							}
 							else{
 								result = (result + " - Double Play - " + run1b.name + " Out at Second - " + run3b.name + " Scored");
@@ -153,6 +156,7 @@ public class Inning {
 								run3b = null;
 								run1b = p1;
 								runsBatter[0]++;
+								p1.gameAB++;
 							}
 							else{
 								result = (result + " - Double Play - " + run1b.name + " Out at Second");
@@ -168,6 +172,7 @@ public class Inning {
 						if (randomBeatOutDP < p1.StealSuccP){
 							result = (result + " - Fielder's Choice - " + run1b.name + " Out at Second");	
 							run1b = p1;
+							p1.gameAB++;
 						}
 						else{
 							result = (result + " - Double Play - " + run1b.name + " Out at Second");

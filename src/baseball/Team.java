@@ -69,7 +69,7 @@ public class Team {
 	
 	public void printTeam(){
 	      System.out.println("Team Name: "+ name );
-	      /*System.out.println("P: "+ P.name );
+	      System.out.println("P: "+ P.name );
 	      System.out.println("C: "+ C.name );
 	      System.out.println("1B: "+ FB.name );
 	      System.out.println("2B: "+ SB.name );
@@ -77,7 +77,7 @@ public class Team {
 	      System.out.println("SS: "+ SS.name );
 	      System.out.println("LF: "+ LF.name );
 	      System.out.println("CF: "+ CF.name );
-	      System.out.println("RF: "+ RF.name );*/
+	      System.out.println("RF: "+ RF.name );
 	      
 	      System.out.println("Wins: "+ W );
 	      System.out.println("Losses: "+ L );

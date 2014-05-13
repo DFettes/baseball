@@ -6,6 +6,7 @@ public class Player {
 	double G, PA, AB, R, H, doubles, triples, HR, RBI, SB, CS, BB, SO, HBP;
 	double singles, battingAVG, singleAVG, doubleAVG, tripleAVG, HRAVG, BBAVG, SOAVG, HBPAVG, OBP, SLG, OPS, TB, StealAttP, StealSuccP;
 	double gamePA, gameAB, gameR, gameH, gamesingles, gamedoubles, gametriples, gameHR, gameRBI, gameSB, gameCS, gameBB, gameSO, gameHBP;
+	double seasonPA, seasonAB, seasonR, seasonH, seasonsingles, seasondoubles, seasontriples, seasonHR, seasonRBI, seasonSB, seasonCS, seasonBB, seasonSO, seasonHBP, seasonBattingAVG, seasonOBP, seasonTB, seasonSLG, seasonOPS;
 	
 	
 	public void setStats() {
@@ -26,9 +27,10 @@ public class Player {
 			OPS = OBP + SLG;
 			
 			gamePA=gameAB=gameR=gameH=gamesingles=gamedoubles=gametriples=gameHR=gameRBI=gameSB=gameCS=gameBB=gameSO=gameHBP=0;
+			seasonPA=seasonAB=seasonR=seasonH=seasonsingles=seasondoubles=seasontriples=seasonHR=seasonRBI=seasonSB=seasonCS=seasonBB=seasonSO=seasonHBP=0;
 			
 			//Speed Stats
-			StealAttP = (SB+CS)*4/PA;
+			StealAttP = (SB+CS)*3.5/PA;
 			StealSuccP = SB/(SB + CS);
 		}
 	}
