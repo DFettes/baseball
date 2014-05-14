@@ -18,7 +18,7 @@ public class CreateTeam {
 		t1.tRF(RF);//
 		Player[] t1battingOrder = {DH,C,FB,SB,TB,SS,LF,CF,RF};
 		t1.tbattingOrder(t1battingOrder);
-		Player[] t1pitchingRotation = {P[0],P[1],P[2],P[3],P[4]};
+		Player[] t1pitchingRotation = {P[0],P[1],P[2],P[3],P[4],P[5]};
 		t1.tpitchingRotation(t1pitchingRotation);
 				
 		t1.tG(0);

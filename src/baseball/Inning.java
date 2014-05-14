@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Random;
+
 public class Inning {
 	
 	public static String getLocation(int resultCode){
@@ -234,7 +236,7 @@ public class Inning {
 		String[] results = {"Singled", "Doubled", "Tripled", "Homered", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flied Out"};
 		int outs = 0; 
 		String location = "";
-		int[] runsBatter = {0, BatterUp};
+		int[] runsBatter = {0, BatterUp, pitcher};
 		Player run1b = null;
 		Player run2b = null;
 		Player run3b = null;
@@ -242,6 +244,11 @@ public class Inning {
 		
 		System.out.println("AT BAT: " + t1.name);
 		while (outs < 3){
+			if (runsBatter[2] != pitcher){
+				runsBatter[2] = pitcher;
+				System.out.println("NEW PITCHER: " + t2.pitchingRotation[pitcher].name);
+			}
+			
 			String runResult = null;
 			/*
 			System.out.println("Outs: " + outs);
@@ -688,10 +695,16 @@ public class Inning {
 			
 			p1.gamePA++;
 			t2.pitchingRotation[pitcher].gamepPA++;
-			t2.pitchingRotation[pitcher].gamepP+=3.8;
-			if (t2.pitchingRotation[pitcher].gamepP > 100){
-				pitcher++;
-				System.out.println("NEW PITCHER");
+			
+			Random x = new Random();
+			double pitchesAB = x.nextGaussian()*2+3.5;
+			if (pitchesAB < 1){
+				pitchesAB = 1;
+			}
+			t2.pitchingRotation[pitcher].gamepP+=pitchesAB;
+			
+			if ((t2.pitchingRotation[pitcher].gamepP > 115 || t2.pitchingRotation[pitcher].gamepER > 6) && t2.pitchingRotation[pitcher].gamepER != 0){
+				pitcher = 5;
 			}
 			
 			if (homeChance && (runsBatter[0]>homeDef)){

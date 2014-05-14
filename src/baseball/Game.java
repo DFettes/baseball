@@ -12,9 +12,14 @@ public class Game {
 		}
 		System.out.println();
 		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
-		System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.pitchingRotation[p1].name, (int)t1.pitchingRotation[p1].gamepIP, (int)t1.pitchingRotation[p1].gamepH, (int)t1.pitchingRotation[p1].gamepER, (int)t1.pitchingRotation[p1].gamepBB, (int)t1.pitchingRotation[p1].gamepHBP, (int)t1.pitchingRotation[p1].gamepK, (int)t1.pitchingRotation[p1].gamepHR, (int)t1.pitchingRotation[p1].gamepP);	
+		for (int i=0; i<6; i++){
+			if (t1.pitchingRotation[i].gamepIP > 0){
+				System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.pitchingRotation[i].name, (int)t1.pitchingRotation[i].gamepIP, (int)t1.pitchingRotation[i].gamepH, (int)t1.pitchingRotation[i].gamepER, (int)t1.pitchingRotation[i].gamepBB, (int)t1.pitchingRotation[i].gamepHBP, (int)t1.pitchingRotation[i].gamepK, (int)t1.pitchingRotation[i].gamepHR, (int)t1.pitchingRotation[i].gamepP);	
+				System.out.println();
+			}
+		}
 		
-		System.out.println();
+
 		System.out.println();
 		System.out.println(t2.name);
 		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP");
@@ -25,7 +30,12 @@ public class Game {
 		}
 		System.out.println();
 		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
-		System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.pitchingRotation[p1].name, (int)t2.pitchingRotation[p1].gamepIP, (int)t2.pitchingRotation[p1].gamepH, (int)t2.pitchingRotation[p1].gamepER, (int)t2.pitchingRotation[p1].gamepBB, (int)t2.pitchingRotation[p1].gamepHBP, (int)t2.pitchingRotation[p1].gamepK, (int)t2.pitchingRotation[p1].gamepHR, (int)t2.pitchingRotation[p2].gamepP);
+		for (int i=0; i<6; i++){
+			if (t2.pitchingRotation[i].gamepIP > 0){
+				System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.pitchingRotation[i].name, (int)t2.pitchingRotation[i].gamepIP, (int)t2.pitchingRotation[i].gamepH, (int)t2.pitchingRotation[i].gamepER, (int)t2.pitchingRotation[i].gamepBB, (int)t2.pitchingRotation[i].gamepHBP, (int)t2.pitchingRotation[i].gamepK, (int)t2.pitchingRotation[i].gamepHR, (int)t2.pitchingRotation[i].gamepP);	
+				System.out.println();
+			}
+		}
 		System.out.println();
 	}
 	
@@ -35,6 +45,8 @@ public class Game {
 		int team2Score = 0;
 		int batterUp1 = 0;
 		int batterUp2 = 0;
+		int inningpitcher1 = pitcher1;
+		int inningpitcher2 = pitcher2;
 		
 		System.out.println("Pitching for the " + team1.name + ": " + team1.pitchingRotation[pitcher1].name);
 		System.out.println("Pitching for the " + team2.name + ": " + team2.pitchingRotation[pitcher2].name);
@@ -42,11 +54,12 @@ public class Game {
 		
 		while (inning < 10 || team1Score == team2Score){
 			System.out.println("TOP OF INNING " + inning);
-			int[] inningArray1 = Inning.NewInning(team1, team2, batterUp1, pitcher2, false, 0);
+			int[] inningArray1 = Inning.NewInning(team1, team2, batterUp1, inningpitcher2, false, 0);
 			int score1Inc = inningArray1[0];
+			inningpitcher2 = inningArray1[2];
 			team1Score += score1Inc;
 			batterUp1 = inningArray1[1];
-			team2.pitchingRotation[pitcher2].gamepIP++;
+			team2.pitchingRotation[inningpitcher2].gamepIP++;
 			
 			if (inning > 8 && team1Score >= team2Score){
 				System.out.println(team1.name + ": " + team1Score);
@@ -55,11 +68,12 @@ public class Game {
 				
 				int homeDef = team1Score-team2Score;
 				System.out.println("BOTTOM OF INNING " + inning);
-				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, pitcher1, true, homeDef);			
-				int score2Inc = inningArray2[0];			
+				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, inningpitcher1, true, homeDef);			
+				int score2Inc = inningArray2[0];
+				inningpitcher1 = inningArray2[2];
 				team2Score += score2Inc;			
 				batterUp2 = inningArray2[1];
-				team1.pitchingRotation[pitcher1].gamepIP++;
+				team1.pitchingRotation[inningpitcher1].gamepIP++;
 			}
 			else if (inning > 8 && team1Score < team2Score){
 				//home team doesn't need at bats, game over
@@ -70,11 +84,12 @@ public class Game {
 				System.out.println();
 				
 				System.out.println("BOTTOM OF INNING " + inning);
-				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, pitcher1, false, 0);			
-				int score2Inc = inningArray2[0];			
+				int[] inningArray2 = Inning.NewInning(team2, team1, batterUp2, inningpitcher1, false, 0);			
+				int score2Inc = inningArray2[0];
+				inningpitcher1 = inningArray2[2];
 				team2Score += score2Inc;			
 				batterUp2 = inningArray2[1];
-				team1.pitchingRotation[pitcher1].gamepIP++;
+				team1.pitchingRotation[inningpitcher1].gamepIP++;
 			}
 			System.out.println("END OF INNING " + inning);
 			System.out.println(team1.name + ": " + team1Score);
@@ -82,6 +97,7 @@ public class Game {
 			System.out.println();
 			inning++;
 		}
+		
 		
 		if (team1Score > team2Score){
 			System.out.println(team1.name + " Win!");

@@ -440,9 +440,29 @@ public class CreatePlayer {
 		p28.ppHBP(31);
 		p28.setPitchingStats();
 		
+		Player p29 = new Player("Aroldis Chapman");
+		p29.ppIP(200);
+		p29.ppER(54);
+		p29.ppK(329);
+		p29.ppH(106);
+		p29.ppBB(100);
+		p29.ppHR(14);
+		p29.ppHBP(9);
+		p29.setPitchingStats();
+		
+		Player p30 = new Player("Mariano Rivera");
+		p30.ppIP(1284);
+		p30.ppER(315);
+		p30.ppK(1173);
+		p30.ppH(998);
+		p30.ppBB(286);
+		p30.ppHR(71);
+		p30.ppHBP(46);
+		p30.setPitchingStats();
 		
 		
-		Player[] playerArray = {p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28};
+		
+		Player[] playerArray = {p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30};
 		return playerArray;
 
 	}
