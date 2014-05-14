@@ -65,7 +65,7 @@ public class Inning {
 			if (resultCode > 6){
 				if (resultCode == 7){
 					p1.gameSO++;
-					p1.gameAB++;
+					p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 					t2.pitchingRotation[pitcher].gamepK++;
 				}
 				else if (resultCode == 10 && run3b!=null && outs < 2){
@@ -80,7 +80,7 @@ public class Inning {
 					else {
 						outs++;
 						result = (result + ", " + run3b.name + " Thrown Out At Home");
-						p1.gameAB++;
+						p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 					}
 					run3b = null;
 				}
@@ -93,7 +93,7 @@ public class Inning {
 							run3b = run2b;
 							run2b = run1b;
 							run1b = p1;
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 						else {
 							result = (p1.name + " Grounded Into Double Play, " + run3b.name + " Out at Home, " + run2b.name + " to Third, " + run1b.name + " to Second");
@@ -102,7 +102,7 @@ public class Inning {
 							run2b = run1b;
 							run1b = null;
 							outs++;
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 					}				
 					else if (run1b!=null && run2b!=null) {
@@ -111,14 +111,14 @@ public class Inning {
 								result = (p1.name + " Grounded Into Fielder's Choice, " + run2b.name + " Out at Third, " + run1b.name + " to Second");					
 								run2b = run1b;
 								run1b = p1;
-								p1.gameAB++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 							}
 							else{
 								result = (p1.name + " Grounded Into Double Play, " + run2b.name + " Out at Third, " + run1b.name + " to Second");
 								run2b = run1b;					
 								run1b = null;
 								outs++;
-								p1.gameAB++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 							}
 					}
 					else if (run1b!=null && run3b!=null) {
@@ -131,7 +131,7 @@ public class Inning {
 								run3b = null;
 								run1b = p1;
 								runsBatter[0]++;
-								p1.gameAB++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 								t2.pitchingRotation[pitcher].gamepER++;
 							}
 							else{
@@ -142,7 +142,7 @@ public class Inning {
 								run1b = null;
 								outs++;
 								runsBatter[0]++;
-								p1.gameAB++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 								t2.pitchingRotation[pitcher].gamepER++;
 							}
 						}
@@ -156,7 +156,7 @@ public class Inning {
 								run3b = null;
 								run1b = p1;
 								runsBatter[0]++;
-								p1.gameAB++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 								t2.pitchingRotation[pitcher].gamepER++;
 							}
 							else{
@@ -164,7 +164,7 @@ public class Inning {
 								run3b = null;					
 								run1b = null;
 								outs++;
-								p1.gameAB++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 							}
 						}
 					}
@@ -181,13 +181,13 @@ public class Inning {
 						}
 						else if (outcome == 2){
 							result = (p1.name + " Grounded Into Fielder's Choice, " + run3b.name + " Out at Home" + run2b.name + " to Third");
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 							run3b = run2b;
 							run2b = null;
 							run1b = p1;
 						}
 						else if (outcome == 3){
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 					}
 					else if (run3b!=null){
@@ -202,12 +202,12 @@ public class Inning {
 						}
 						else if (outcome == 2){
 							result = (p1.name + " Grounded Into Fielder's Choice, " + run3b.name + " Out at Home");
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 							run3b = null;
 							run1b = p1;
 						}
 						else if (outcome == 3){
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 					}
 					else if (run2b!=null){
@@ -219,12 +219,12 @@ public class Inning {
 						}
 						else if (outcome == 2){
 							result = (p1.name + " Grounded Into Fielder's Choice, " + run2b.name + " Out at Third");
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 							run2b = null;
 							run1b = p1;
 						}
 						else if (outcome == 3){
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 					}
 					else if (run1b!=null){
@@ -232,19 +232,19 @@ public class Inning {
 						if (randomBeatOutDP < p1.StealSuccP){
 							result = (p1.name + " Grounded Into Fielder's Choice, " + run1b.name + " Out at Second");	
 							run1b = p1;
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 						else{
 							result = (p1.name + " Grounded Into Double Play, " + run1b.name + " Out at Second");
 							run1b = null;
 							outs++;
-							p1.gameAB++;
+							p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 						}
 					}
-					else p1.gameAB++;
+					else p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 				}
 				else if (resultCode == 9 || resultCode == 10){
-					p1.gameAB++;
+					p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 				}
 				outs++;
 			}
@@ -284,7 +284,7 @@ public class Inning {
 				}
 				run1b = p1;
 				p1.gamesingles++;
-				p1.gameAB++;
+				p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 				t2.pitchingRotation[pitcher].gamepH++;
 			}
 			
@@ -326,7 +326,7 @@ public class Inning {
 				}
 				run2b = p1;
 				p1.gamedoubles++;
-				p1.gameAB++;
+				p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 				t2.pitchingRotation[pitcher].gamepH++;
 			}
 			
@@ -358,7 +358,7 @@ public class Inning {
 				}
 				run3b = p1;
 				p1.gametriples++;
-				p1.gameAB++;
+				p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 				t2.pitchingRotation[pitcher].gamepH++;
 			}
 			
@@ -393,7 +393,7 @@ public class Inning {
 				p1.gameRBI++;
 				runsBatter[0]++;
 				p1.gameHR++;
-				p1.gameAB++;
+				p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 				t2.pitchingRotation[pitcher].gamepER++;
 				t2.pitchingRotation[pitcher].gamepH++;
 				t2.pitchingRotation[pitcher].gamepHR++;

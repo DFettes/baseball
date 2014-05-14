@@ -21,8 +21,8 @@ public class MainSetup {
 				t1.battingOrder[i].gamePA=t1.battingOrder[i].gameAB=t1.battingOrder[i].gameR=t1.battingOrder[i].gameH=t1.battingOrder[i].gamesingles=t1.battingOrder[i].gamedoubles=t1.battingOrder[i].gametriples=t1.battingOrder[i].gameHR=t1.battingOrder[i].gameRBI=t1.battingOrder[i].gameSB=t1.battingOrder[i].gameCS=t1.battingOrder[i].gameBB=t1.battingOrder[i].gameSO=t1.battingOrder[i].gameHBP=0;
 				t2.battingOrder[i].gamePA=t2.battingOrder[i].gameAB=t2.battingOrder[i].gameR=t2.battingOrder[i].gameH=t2.battingOrder[i].gamesingles=t2.battingOrder[i].gamedoubles=t2.battingOrder[i].gametriples=t2.battingOrder[i].gameHR=t2.battingOrder[i].gameRBI=t2.battingOrder[i].gameSB=t2.battingOrder[i].gameCS=t2.battingOrder[i].gameBB=t2.battingOrder[i].gameSO=t2.battingOrder[i].gameHBP=0;
 			}
-			t1.pitchingRotation[pitcher1].gamepIP=t1.pitchingRotation[pitcher1].gamepER=t1.pitchingRotation[pitcher1].gamepK=t1.pitchingRotation[pitcher1].gamepH=t1.pitchingRotation[pitcher1].gamepBB=t1.pitchingRotation[pitcher1].gamepHBP=t1.pitchingRotation[pitcher1].gamepHR=t1.pitchingRotation[pitcher1].gamepERA=t1.pitchingRotation[pitcher1].gamepWHIP=t1.pitchingRotation[pitcher1].gamepK9=t1.pitchingRotation[pitcher1].gamepH9=t1.pitchingRotation[pitcher1].gamepBB9=t1.pitchingRotation[pitcher1].gamepHR9 = 0;
-			t2.pitchingRotation[pitcher2].gamepIP=t2.pitchingRotation[pitcher2].gamepER=t2.pitchingRotation[pitcher2].gamepK=t2.pitchingRotation[pitcher2].gamepH=t2.pitchingRotation[pitcher2].gamepBB=t2.pitchingRotation[pitcher2].gamepHBP=t2.pitchingRotation[pitcher2].gamepHR=t2.pitchingRotation[pitcher2].gamepERA=t2.pitchingRotation[pitcher2].gamepWHIP=t2.pitchingRotation[pitcher2].gamepK9=t2.pitchingRotation[pitcher2].gamepH9=t2.pitchingRotation[pitcher2].gamepBB9=t2.pitchingRotation[pitcher2].gamepHR9 = 0;
+			t1.pitchingRotation[pitcher1].gamepIP=t1.pitchingRotation[pitcher2].gamepAB=t1.pitchingRotation[pitcher1].gamepER=t1.pitchingRotation[pitcher1].gamepK=t1.pitchingRotation[pitcher1].gamepH=t1.pitchingRotation[pitcher1].gamepBB=t1.pitchingRotation[pitcher1].gamepHBP=t1.pitchingRotation[pitcher1].gamepHR=t1.pitchingRotation[pitcher1].gamepERA=t1.pitchingRotation[pitcher1].gamepWHIP=t1.pitchingRotation[pitcher1].gamepK9=t1.pitchingRotation[pitcher1].gamepH9=t1.pitchingRotation[pitcher1].gamepBB9=t1.pitchingRotation[pitcher1].gamepHR9 = 0;
+			t2.pitchingRotation[pitcher2].gamepIP=t2.pitchingRotation[pitcher2].gamepAB=t2.pitchingRotation[pitcher2].gamepER=t2.pitchingRotation[pitcher2].gamepK=t2.pitchingRotation[pitcher2].gamepH=t2.pitchingRotation[pitcher2].gamepBB=t2.pitchingRotation[pitcher2].gamepHBP=t2.pitchingRotation[pitcher2].gamepHR=t2.pitchingRotation[pitcher2].gamepERA=t2.pitchingRotation[pitcher2].gamepWHIP=t2.pitchingRotation[pitcher2].gamepK9=t2.pitchingRotation[pitcher2].gamepH9=t2.pitchingRotation[pitcher2].gamepBB9=t2.pitchingRotation[pitcher2].gamepHR9 = 0;
 
 			
 			Game.NewGame(t1, t2, pitcher1, pitcher2);
@@ -58,6 +58,7 @@ public class MainSetup {
 				t2.battingOrder[i].seasonHBP+=t2.battingOrder[i].gameHBP;
 			}
 			t1.pitchingRotation[pitcher1].seasonpIP += t1.pitchingRotation[pitcher1].gamepIP;
+			t1.pitchingRotation[pitcher1].seasonpAB += t1.pitchingRotation[pitcher1].gamepAB;
 			t1.pitchingRotation[pitcher1].seasonpER += t1.pitchingRotation[pitcher1].gamepER;
 			t1.pitchingRotation[pitcher1].seasonpK += t1.pitchingRotation[pitcher1].gamepK;
 			t1.pitchingRotation[pitcher1].seasonpH += t1.pitchingRotation[pitcher1].gamepH;
@@ -66,6 +67,7 @@ public class MainSetup {
 			t1.pitchingRotation[pitcher1].seasonpHR += t1.pitchingRotation[pitcher1].gamepHR;
 			
 			t2.pitchingRotation[pitcher2].seasonpIP += t2.pitchingRotation[pitcher2].gamepIP;
+			t2.pitchingRotation[pitcher2].seasonpAB += t2.pitchingRotation[pitcher2].gamepAB;
 			t2.pitchingRotation[pitcher2].seasonpER += t2.pitchingRotation[pitcher2].gamepER;
 			t2.pitchingRotation[pitcher2].seasonpK += t2.pitchingRotation[pitcher2].gamepK;
 			t2.pitchingRotation[pitcher2].seasonpH += t2.pitchingRotation[pitcher2].gamepH;
@@ -98,8 +100,8 @@ public class MainSetup {
 		for (int i=0; i<5; i++){
 			t1.pitchingRotation[i].setSeasonPitchingStats();
 			System.out.println();
-			System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9");
-			System.out.format("%-20s%-5d%-4d%-4d%-4d%-5d%-5d%-5d%-5d%-5d%-5d%-7s%-7s%-7s%-7s", t1.pitchingRotation[i].name, (int)t1.pitchingRotation[i].seasonGS, (int)t1.pitchingRotation[i].seasonW, (int)t1.pitchingRotation[i].seasonL, (int)t1.pitchingRotation[i].seasonpIP, (int)t1.pitchingRotation[i].seasonpH, (int)t1.pitchingRotation[i].seasonpER, (int)t1.pitchingRotation[i].seasonpBB, (int)t1.pitchingRotation[i].seasonpHBP, (int)t1.pitchingRotation[i].seasonpK, (int)t1.pitchingRotation[i].seasonpHR, twoDForm.format(t1.pitchingRotation[i].seasonpERA), twoDForm.format(t1.pitchingRotation[i].seasonpWHIP), twoDForm.format(t1.pitchingRotation[i].seasonpK9), twoDForm.format(t1.pitchingRotation[i].seasonpBB9));	
+			System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9----BAA");
+			System.out.format("%-20s%-5d%-4d%-4d%-4d%-5d%-5d%-5d%-5d%-5d%-5d%-7s%-7s%-7s%-7s%-7s", t1.pitchingRotation[i].name, (int)t1.pitchingRotation[i].seasonGS, (int)t1.pitchingRotation[i].seasonW, (int)t1.pitchingRotation[i].seasonL, (int)t1.pitchingRotation[i].seasonpIP, (int)t1.pitchingRotation[i].seasonpH, (int)t1.pitchingRotation[i].seasonpER, (int)t1.pitchingRotation[i].seasonpBB, (int)t1.pitchingRotation[i].seasonpHBP, (int)t1.pitchingRotation[i].seasonpK, (int)t1.pitchingRotation[i].seasonpHR, twoDForm.format(t1.pitchingRotation[i].seasonpERA), twoDForm.format(t1.pitchingRotation[i].seasonpWHIP), twoDForm.format(t1.pitchingRotation[i].seasonpK9), twoDForm.format(t1.pitchingRotation[i].seasonpBB9), twoDForm.format(t1.pitchingRotation[i].seasonpBAA));	
 			System.out.println();
 		}
 		
@@ -120,8 +122,8 @@ public class MainSetup {
 		for (int i=0; i<5; i++){
 			t2.pitchingRotation[i].setSeasonPitchingStats();
 			System.out.println();
-			System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9");
-			System.out.format("%-20s%-5d%-4d%-4d%-4d%-5d%-5d%-5d%-5d%-5d%-5d%-7s%-7s%-7s%-7s", t2.pitchingRotation[i].name, (int)t2.pitchingRotation[i].seasonGS, (int)t2.pitchingRotation[i].seasonW, (int)t2.pitchingRotation[i].seasonL, (int)t2.pitchingRotation[i].seasonpIP, (int)t2.pitchingRotation[i].seasonpH, (int)t2.pitchingRotation[i].seasonpER, (int)t2.pitchingRotation[i].seasonpBB, (int)t2.pitchingRotation[i].seasonpHBP, (int)t2.pitchingRotation[i].seasonpK, (int)t2.pitchingRotation[i].seasonpHR, twoDForm.format(t2.pitchingRotation[i].seasonpERA), twoDForm.format(t2.pitchingRotation[i].seasonpWHIP), twoDForm.format(t2.pitchingRotation[i].seasonpK9), twoDForm.format(t2.pitchingRotation[i].seasonpBB9));	
+			System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9----BAA");
+			System.out.format("%-20s%-5d%-4d%-4d%-4d%-5d%-5d%-5d%-5d%-5d%-5d%-7s%-7s%-7s%-7s%-7s", t2.pitchingRotation[i].name, (int)t2.pitchingRotation[i].seasonGS, (int)t2.pitchingRotation[i].seasonW, (int)t2.pitchingRotation[i].seasonL, (int)t2.pitchingRotation[i].seasonpIP, (int)t2.pitchingRotation[i].seasonpH, (int)t2.pitchingRotation[i].seasonpER, (int)t2.pitchingRotation[i].seasonpBB, (int)t2.pitchingRotation[i].seasonpHBP, (int)t2.pitchingRotation[i].seasonpK, (int)t2.pitchingRotation[i].seasonpHR, twoDForm.format(t2.pitchingRotation[i].seasonpERA), twoDForm.format(t2.pitchingRotation[i].seasonpWHIP), twoDForm.format(t2.pitchingRotation[i].seasonpK9), twoDForm.format(t2.pitchingRotation[i].seasonpBB9), twoDForm.format(t2.pitchingRotation[i].seasonpBAA));	
 			System.out.println();
 		}
 
@@ -170,8 +172,8 @@ public class MainSetup {
 		Player p27 = playerArray[26];
 		Player p28 = playerArray[27];
 		
-		Player[] t1PRot = {p19,p22,p20,p24,p27};
-		Player[] t2PRot = {p25,p23,p28,p26,p21};
+		Player[] t1PRot = {p19,p24,p28,p22,p27};
+		Player[] t2PRot = {p25,p23,p20,p26,p21};
 		
 		Team t1 = CreateTeam.NewTeam("Blue Jays", t1PRot, p10,p12,p11,p13,p16,p18,p14,p15,p17);
 		Team t2 = CreateTeam.NewTeam("Legends", t2PRot, p4,p3,p5,p2,p8,p1,p9,p6,p7);
@@ -183,8 +185,8 @@ public class MainSetup {
 		//t2.printTeam();
 		//p10.printGameStats();
 		
-		//Game.NewGame(t1, t2, 0, 0);
-		simSeason(t1, t2);
+		Game.NewGame(t1, t2, 0, 0);
+		//simSeason(t1, t2);
 	      
 	      
 	}

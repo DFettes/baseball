@@ -85,7 +85,7 @@ public class Team {
 		
 	      System.out.println("Team Name: "+ name );
 	      //System.out.println("P: "+ P.name );
-	      System.out.println("DH: "+ DH.name );
+	      //System.out.println("DH: "+ DH.name );
 	      /*System.out.println("C: "+ C.name );
 	      System.out.println("1B: "+ FB.name );
 	      System.out.println("2B: "+ SB.name );

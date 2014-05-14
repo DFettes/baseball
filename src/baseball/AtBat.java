@@ -8,7 +8,7 @@ public class AtBat {
 		double baseline = 0;
 		
 		//double[] probabilities = {p1.singleAVG, p1.doubleAVG, p1.tripleAVG, p1.HRAVG, p1.BBAVG, p1.HBPAVG, p1.SOAVG};
-		double[] adjProbabilities = {p1.singleAVG*p2.H9diff, p1.doubleAVG*p2.H9diff, p1.tripleAVG*p2.H9diff, p1.HRAVG*p2.HR9diff, 0.9*p1.BBAVG*p2.BB9diff, p1.HBPAVG*p2.HBP9diff, 1.4*p1.SOAVG*p2.K9diff};
+		double[] adjProbabilities = {1.1*p1.singleAVG*p2.H9diff, 1*p1.doubleAVG*p2.H9diff, 1*p1.tripleAVG*p2.H9diff, 1*p1.HRAVG*p2.HR9diff, 0.75*p1.BBAVG*p2.BB9diff, p1.HBPAVG*p2.HBP9diff, 1.4*p1.SOAVG*p2.K9diff};
 		int [] resultsCode = {1,2,3,4,5,6,7,8,9,10};
 		
 		boolean set = false;
