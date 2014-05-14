@@ -11,8 +11,8 @@ public class Game {
 			System.out.println();
 		}
 		System.out.println();
-		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR");
-		System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.pitchingRotation[p1].name, (int)t1.pitchingRotation[p1].gamepIP, (int)t1.pitchingRotation[p1].gamepH, (int)t1.pitchingRotation[p1].gamepER, (int)t1.pitchingRotation[p1].gamepBB, (int)t1.pitchingRotation[p1].gamepHBP, (int)t1.pitchingRotation[p1].gamepK, (int)t1.pitchingRotation[p1].gamepHR);	
+		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
+		System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.pitchingRotation[p1].name, (int)t1.pitchingRotation[p1].gamepIP, (int)t1.pitchingRotation[p1].gamepH, (int)t1.pitchingRotation[p1].gamepER, (int)t1.pitchingRotation[p1].gamepBB, (int)t1.pitchingRotation[p1].gamepHBP, (int)t1.pitchingRotation[p1].gamepK, (int)t1.pitchingRotation[p1].gamepHR, (int)(3.8*t1.pitchingRotation[p1].gamepAB));	
 		
 		System.out.println();
 		System.out.println();
@@ -24,8 +24,8 @@ public class Game {
 			System.out.println();
 		}
 		System.out.println();
-		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR");
-		System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.pitchingRotation[p1].name, (int)t2.pitchingRotation[p1].gamepIP, (int)t2.pitchingRotation[p1].gamepH, (int)t2.pitchingRotation[p1].gamepER, (int)t2.pitchingRotation[p1].gamepBB, (int)t2.pitchingRotation[p1].gamepHBP, (int)t2.pitchingRotation[p1].gamepK, (int)t2.pitchingRotation[p1].gamepHR);
+		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
+		System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.pitchingRotation[p1].name, (int)t2.pitchingRotation[p1].gamepIP, (int)t2.pitchingRotation[p1].gamepH, (int)t2.pitchingRotation[p1].gamepER, (int)t2.pitchingRotation[p1].gamepBB, (int)t2.pitchingRotation[p1].gamepHBP, (int)t2.pitchingRotation[p1].gamepK, (int)t2.pitchingRotation[p1].gamepHR, (int)(3.8*t2.pitchingRotation[p1].gamepAB));
 		System.out.println();
 	}
 	

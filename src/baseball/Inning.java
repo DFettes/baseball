@@ -2,9 +2,238 @@ package baseball;
 
 public class Inning {
 	
+	public static String getLocation(int resultCode){
+		String location = "";
+		double randomLocation = Math.random();
+		double options;
+		switch (resultCode){
+		
+		case 7:
+			options = 2;
+			if (randomLocation < 1/options){
+				location = " Swinging";
+			}
+			else {
+				location = " Looking";
+			}
+			break;
+		
+		case 11:
+			options = 3;
+			if (randomLocation < 1/options){
+				location = " to Deep Left";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Deep Center";
+			}
+			else {
+				location = " to Deep Right";
+			}
+			break;
+			
+		case 10:
+			options = 13;
+			if (randomLocation < 1/options){
+				location = " to Shallow Left";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Shallow Center";
+			}
+			else if (randomLocation < 3/options){
+				location = " to Shallow Right";
+			}
+			else if (randomLocation < 4/options){
+				location = " to Shallow Left Center";
+			}
+			else if (randomLocation < 5/options){
+				location = " to Shallow Right Center";
+			}
+			else if (randomLocation < 6/options){
+				location = " to Left";
+			}
+			else if (randomLocation < 7/options){
+				location = " to Center";
+			}
+			else if (randomLocation < 8/options){
+				location = " to Right";
+			}
+			else if (randomLocation < 9/options){
+				location = " to Left Center";
+			}
+			else if (randomLocation < 10/options){
+				location = " to Right Center";
+			}
+			else if (randomLocation < 10.5/options){
+				location = " to First";
+			}
+			else if (randomLocation < 11/options){
+				location = " to Second";
+			}
+			else if (randomLocation < 11.5/options){
+				location = " to Third";
+			}
+			else if (randomLocation < 12.0/options){
+				location = " to Shortstop";
+			}
+			else if (randomLocation < 12.5/options){
+				location = " to Catcher";
+			}
+			else location = " to Pitcher";
+			
+			break;
+			
+		case 1:
+			options = 13;
+			if (randomLocation < 1/options){
+				location = " to Shallow Left";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Shallow Center";
+			}
+			else if (randomLocation < 3/options){
+				location = " to Shallow Right";
+			}
+			else if (randomLocation < 4/options){
+				location = " to Shallow Left Center";
+			}
+			else if (randomLocation < 5/options){
+				location = " to Shallow Right Center";
+			}
+			else if (randomLocation < 6/options){
+				location = " to Left";
+			}
+			else if (randomLocation < 7/options){
+				location = " to Center";
+			}
+			else if (randomLocation < 8/options){
+				location = " to Right";
+			}
+			else if (randomLocation < 9/options){
+				location = " to Left Center";
+			}
+			else if (randomLocation < 10/options){
+				location = " to Right Center";
+			}
+			else if (randomLocation < 10.5/options){
+				location = " to First";
+			}
+			else if (randomLocation < 11/options){
+				location = " to Second";
+			}
+			else if (randomLocation < 11.5/options){
+				location = " to Third";
+			}
+			else if (randomLocation < 12.5/options){
+				location = " to Shortstop";
+			}
+			else location = " to Pitcher";
+			
+			break;
+			
+		case 2:
+			options = 10;
+			if (randomLocation < 1/options){
+				location = " to Shallow Left";
+			}
+			else if (randomLocation < 1/options){
+				location = " to Shallow Right";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Left";
+			}
+			else if (randomLocation < 3/options){
+				location = " to Right";
+			}
+			else if (randomLocation < 4/options){
+				location = " to Left Center";
+			}
+			else if (randomLocation < 5/options){
+				location = " to Right Center";
+			}
+			else if (randomLocation < 6/options){
+				location = " to Deep Left";
+			}
+			else if (randomLocation < 7/options){
+				location = " to Deep Right";
+			}
+			else if (randomLocation < 8/options){
+				location = " to Deep Left Center";
+			}
+			else if (randomLocation < 9/options){
+				location = " to Deep Right Center";
+			}
+			else location = " to Deep Center";
+			
+			break;
+			
+		case 3:
+			options = 5;
+			if (randomLocation < 1/options){
+				location = " to Deep Left";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Deep Right";
+			}
+			else if (randomLocation < 3/options){
+				location = " to Deep Left Center";
+			}
+			else if (randomLocation < 4/options){
+				location = " to Deep Right Center";
+			}
+			else location = " to Deep Center";
+			
+			break;
+			
+		case 4:
+			options = 5;
+			if (randomLocation < 1/options){
+				location = " to Deep Left";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Deep Right";
+			}
+			else if (randomLocation < 3/options){
+				location = " to Deep Left Center";
+			}
+			else if (randomLocation < 4/options){
+				location = " to Deep Right Center";
+			}
+			else location = " to Deep Center";
+			
+			break;
+			
+		case 9:
+			options = 4.5;
+			if (randomLocation < 1/options){
+				location = " to First";
+			}
+			else if (randomLocation < 2/options){
+				location = " to Second";
+			}
+			else if (randomLocation < 3/options){
+				location = " to Third";
+			}
+			else if (randomLocation < 4/options){
+				location = " to Shortstop";
+			}
+			else location = " to Pitcher";
+			
+			break;
+		}
+		return location;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public static int[] NewInning(Team t1, Team t2, int BatterUp, int pitcher, boolean homeChance, int homeDef){
-		String[] results = {"Singled", "Doubled", "Tripled", "Homered!", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flew Out"};
+		String[] results = {"Singled", "Doubled", "Tripled", "Homered", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flied Out"};
 		int outs = 0; 
+		String location = "";
 		int[] runsBatter = {0, BatterUp};
 		Player run1b = null;
 		Player run2b = null;
@@ -59,7 +288,9 @@ public class Inning {
 			Player p1 = t1.battingOrder[BatterUp];
 			Player p2 = t2.pitchingRotation[pitcher];
 			int resultCode = AtBat.NewAtBat(p1, p2);
-			String result = (p1.name + " " + results[resultCode-1]);
+			location = getLocation(resultCode);
+			//RESULT
+			String result = (p1.name + " " + results[resultCode-1] + location);
 			//System.out.println();
 			
 			if (resultCode > 6){
@@ -69,10 +300,11 @@ public class Inning {
 					t2.pitchingRotation[pitcher].gamepK++;
 				}
 				else if (resultCode == 10 && run3b!=null && outs < 2){
+					location = getLocation(11);
 					double randomSacFly = Math.random();
 					if (randomSacFly < run3b.StealSuccP){
 						runsBatter[0]++;
-						result = (result + ", " + run3b.name + " Scored on Sacrifice Fly");
+						result = (p1.name + " Hit Sacrifice Fly" + location + ", " + run3b.name + " Scored");
 						run3b.gameR++;
 						p1.gameRBI++;
 						t2.pitchingRotation[pitcher].gamepER++;
@@ -456,6 +688,8 @@ public class Inning {
 			System.out.println(result);
 			
 			p1.gamePA++;
+			t2.pitchingRotation[pitcher].gamepPA++;
+			
 			if (homeChance && (runsBatter[0]>homeDef)){
 				outs=3;
 			}

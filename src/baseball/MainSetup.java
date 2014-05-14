@@ -97,10 +97,10 @@ public class MainSetup {
 			System.out.format("%-18s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-6d%-5d%-7s%-7s%-5d%-7s%-7s", t1.battingOrder[i].name, (int)t1.battingOrder[i].seasonPA, (int)t1.battingOrder[i].seasonAB, (int)t1.battingOrder[i].seasonR, (int)t1.battingOrder[i].seasonH, (int)t1.battingOrder[i].seasonRBI, (int)t1.battingOrder[i].seasonsingles, (int)t1.battingOrder[i].seasondoubles, (int)t1.battingOrder[i].seasontriples, (int)t1.battingOrder[i].seasonHR, (int)t1.battingOrder[i].seasonSB, (int)t1.battingOrder[i].seasonCS, (int)t1.battingOrder[i].seasonBB, (int)t1.battingOrder[i].seasonSO, (int)t1.battingOrder[i].seasonHBP, twoDForm.format(t1.battingOrder[i].seasonBattingAVG), twoDForm.format(t1.battingOrder[i].seasonOBP), (int)t1.battingOrder[i].seasonTB, twoDForm.format(t1.battingOrder[i].seasonSLG), twoDForm.format(t1.battingOrder[i].seasonOPS));
 			System.out.println();
 		}
+		System.out.println();
+		System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9----BAA");
 		for (int i=0; i<5; i++){
 			t1.pitchingRotation[i].setSeasonPitchingStats();
-			System.out.println();
-			System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9----BAA");
 			System.out.format("%-20s%-5d%-4d%-4d%-4d%-5d%-5d%-5d%-5d%-5d%-5d%-7s%-7s%-7s%-7s%-7s", t1.pitchingRotation[i].name, (int)t1.pitchingRotation[i].seasonGS, (int)t1.pitchingRotation[i].seasonW, (int)t1.pitchingRotation[i].seasonL, (int)t1.pitchingRotation[i].seasonpIP, (int)t1.pitchingRotation[i].seasonpH, (int)t1.pitchingRotation[i].seasonpER, (int)t1.pitchingRotation[i].seasonpBB, (int)t1.pitchingRotation[i].seasonpHBP, (int)t1.pitchingRotation[i].seasonpK, (int)t1.pitchingRotation[i].seasonpHR, twoDForm.format(t1.pitchingRotation[i].seasonpERA), twoDForm.format(t1.pitchingRotation[i].seasonpWHIP), twoDForm.format(t1.pitchingRotation[i].seasonpK9), twoDForm.format(t1.pitchingRotation[i].seasonpBB9), twoDForm.format(t1.pitchingRotation[i].seasonpBAA));	
 			System.out.println();
 		}
@@ -118,11 +118,10 @@ public class MainSetup {
 			System.out.format("%-18s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-6d%-5d%-7s%-7s%-5d%-7s%-7s", t2.battingOrder[i].name, (int)t2.battingOrder[i].seasonPA, (int)t2.battingOrder[i].seasonAB, (int)t2.battingOrder[i].seasonR, (int)t2.battingOrder[i].seasonH, (int)t2.battingOrder[i].seasonRBI, (int)t2.battingOrder[i].seasonsingles, (int)t2.battingOrder[i].seasondoubles, (int)t2.battingOrder[i].seasontriples, (int)t2.battingOrder[i].seasonHR, (int)t2.battingOrder[i].seasonSB, (int)t2.battingOrder[i].seasonCS, (int)t2.battingOrder[i].seasonBB, (int)t2.battingOrder[i].seasonSO, (int)t2.battingOrder[i].seasonHBP, twoDForm.format(t2.battingOrder[i].seasonBattingAVG), twoDForm.format(t2.battingOrder[i].seasonOBP), (int)t2.battingOrder[i].seasonTB, twoDForm.format(t2.battingOrder[i].seasonSLG), twoDForm.format(t2.battingOrder[i].seasonOPS));
 			System.out.println();
 		}
-		
+		System.out.println();
+		System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9----BAA");
 		for (int i=0; i<5; i++){
 			t2.pitchingRotation[i].setSeasonPitchingStats();
-			System.out.println();
-			System.out.println("Pitcher-------------GS---W---L---IP---H---ER---BB---HBP---K---HR----ERA----WHIP----K9----BB9----BAA");
 			System.out.format("%-20s%-5d%-4d%-4d%-4d%-5d%-5d%-5d%-5d%-5d%-5d%-7s%-7s%-7s%-7s%-7s", t2.pitchingRotation[i].name, (int)t2.pitchingRotation[i].seasonGS, (int)t2.pitchingRotation[i].seasonW, (int)t2.pitchingRotation[i].seasonL, (int)t2.pitchingRotation[i].seasonpIP, (int)t2.pitchingRotation[i].seasonpH, (int)t2.pitchingRotation[i].seasonpER, (int)t2.pitchingRotation[i].seasonpBB, (int)t2.pitchingRotation[i].seasonpHBP, (int)t2.pitchingRotation[i].seasonpK, (int)t2.pitchingRotation[i].seasonpHR, twoDForm.format(t2.pitchingRotation[i].seasonpERA), twoDForm.format(t2.pitchingRotation[i].seasonpWHIP), twoDForm.format(t2.pitchingRotation[i].seasonpK9), twoDForm.format(t2.pitchingRotation[i].seasonpBB9), twoDForm.format(t2.pitchingRotation[i].seasonpBAA));	
 			System.out.println();
 		}
@@ -178,12 +177,10 @@ public class MainSetup {
 		Team t1 = CreateTeam.NewTeam("Blue Jays", t1PRot, p10,p12,p11,p13,p16,p18,p14,p15,p17);
 		Team t2 = CreateTeam.NewTeam("Legends", t2PRot, p4,p3,p5,p2,p8,p1,p9,p6,p7);
 		
-		//p10.printPlayer();
-		//.setAdjStats();
 		
 		//t1.printTeam();
 		//t2.printTeam();
-		//p10.printGameStats();
+
 		
 		Game.NewGame(t1, t2, 0, 0);
 		//simSeason(t1, t2);
