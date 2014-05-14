@@ -620,7 +620,6 @@ public class Inning {
 					runsBatter[0]++;
 					t2.pitchingRotation[pitcher].gamepER++;
 				}
-				result = (result + ", " + p1.name + " Scored");
 				p1.gameR++;
 				p1.gameRBI++;
 				runsBatter[0]++;
@@ -689,6 +688,11 @@ public class Inning {
 			
 			p1.gamePA++;
 			t2.pitchingRotation[pitcher].gamepPA++;
+			t2.pitchingRotation[pitcher].gamepP+=3.8;
+			if (t2.pitchingRotation[pitcher].gamepP > 100){
+				pitcher++;
+				System.out.println("NEW PITCHER");
+			}
 			
 			if (homeChance && (runsBatter[0]>homeDef)){
 				outs=3;
