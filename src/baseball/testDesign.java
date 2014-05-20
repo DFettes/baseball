@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -20,92 +21,143 @@ public class testDesign {
 	static int pitcher;
 	static boolean homeChance;
 	static int homeDef;
+	String[] results = {"Singled", "Doubled", "Tripled", "Homered", "Walked", "Hit By Pitch", "Struck Out", "Out", "Grounded Out", "Flied Out"};
+	int outs; 
+	int i;
+	String location;
+	int[] runsBatter = new int [3];
+	Player run1b;
+	Player run2b;
+	Player run3b;
+
 	
 	
 	
 	private JFrame frame;
 	private JTextArea textAreaOuts;
-	private JTextArea textAreaRuns;
+	private JTextArea textAreaRuns1;
+	private JTextArea textAreaRuns2;
 	private JTextArea textAreaPBP;
 	private JTextArea firstBase;
 	private JTextArea secondBase;
 	private JTextArea thirdBase;
 	private JTextArea homeBase;
-	private JLabel JLabelRuns;
+	private JTextArea inning;
+	private JLabel JLabelRuns1;
+	private JLabel JLabelRuns2;
 	private JLabel JLabelOuts;
+	private JLabel JLabelInning;
 	JScrollPane jScrollPane=new JScrollPane();
+	private JButton nextInning;
 	
 	
 	{
-	frame = new JFrame();
-	frame.getContentPane().setBackground(Color.RED);
-	frame.setBounds(100, 100, 450, 300);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.getContentPane().setLayout(null);}
-	{
-	textAreaOuts = new JTextArea();
-	textAreaOuts.setEditable(false);
-	textAreaOuts.setBounds(76, 41, 28, 22);
-	frame.getContentPane().add(textAreaOuts);
+		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.RED);
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 	}
 	{
-	textAreaRuns = new JTextArea();
-	textAreaRuns.setEditable(false);
-	textAreaRuns.setBounds(76, 74, 28, 22);
-	frame.getContentPane().add(textAreaRuns);
+		textAreaOuts = new JTextArea();
+		textAreaOuts.setEditable(false);
+		textAreaOuts.setBounds(57, 128, 28, 22);
+		frame.getContentPane().add(textAreaOuts);
 	}
 	{
-	textAreaPBP = new JTextArea();
-	textAreaPBP.setAutoscrolls(false);
-	textAreaPBP.setEditable(false);
-	textAreaPBP.setBounds(10, 157, 414, 105);
+		textAreaRuns1 = new JTextArea();
+		textAreaRuns1.setEditable(false);
+		textAreaRuns1.setBounds(94, 11, 28, 22);
+		frame.getContentPane().add(textAreaRuns1);
+	}
+	{
+		textAreaRuns2 = new JTextArea();
+		textAreaRuns2.setEditable(false);
+		textAreaRuns2.setBounds(94, 44, 28, 22);
+		frame.getContentPane().add(textAreaRuns2);
+		}
+	{
+		textAreaPBP = new JTextArea();
+		textAreaPBP.setAutoscrolls(false);
+		textAreaPBP.setEditable(false);
+		textAreaPBP.setBounds(10, 157, 414, 105);
 	}
 	{
 		firstBase = new JTextArea();
 		firstBase.setAutoscrolls(false);
 		firstBase.setEditable(false);
-		firstBase.setBounds(356, 74, 20, 20);
+		firstBase.setBounds(391, 63, 20, 20);
 		frame.getContentPane().add(firstBase);
 	}
 	{
 		secondBase = new JTextArea();
 		secondBase.setAutoscrolls(false);
 		secondBase.setEditable(false);
-		secondBase.setBounds(299, 22, 20, 20);
+		secondBase.setBounds(334, 11, 20, 20);
 		frame.getContentPane().add(secondBase);
 	}
 	{
 		thirdBase = new JTextArea();
 		thirdBase.setAutoscrolls(false);
 		thirdBase.setEditable(false);
-		thirdBase.setBounds(241, 74, 20, 20);
+		thirdBase.setBounds(276, 63, 20, 20);
 		frame.getContentPane().add(thirdBase);
 	}
 	{
 		homeBase = new JTextArea();
 		homeBase.setAutoscrolls(false);
 		homeBase.setEditable(false);
-		homeBase.setBounds(299, 128, 20, 20);
+		homeBase.setBounds(334, 117, 20, 20);
 		frame.getContentPane().add(homeBase);
 	}
 	{
-	JScrollPane scrollPane = new JScrollPane(textAreaPBP);
-	scrollPane.setLocation(0, 159);
-	scrollPane.setSize(434, 100);
-	frame.getContentPane().add(scrollPane);}
-	{
-	JLabelRuns = new JLabel();
-	JLabelRuns.setForeground(Color.WHITE);
-	JLabelRuns.setText("Runs");
-	JLabelRuns.setBounds(15, 74, 51, 22);
-	frame.getContentPane().add(JLabelRuns);
+		inning = new JTextArea();
+		inning.setEditable(false);
+		inning.setBounds(57, 95, 28, 22);
+		frame.getContentPane().add(inning);
 	}
 	{
-	JLabelOuts = new JLabel();
-	JLabelOuts.setForeground(Color.WHITE);
-	JLabelOuts.setText("Outs");
-	JLabelOuts.setBounds(15, 41, 51, 22);
-	frame.getContentPane().add(JLabelOuts);
+	}
+	{
+		JScrollPane scrollPane = new JScrollPane(textAreaPBP);
+		scrollPane.setLocation(0, 159);
+		scrollPane.setSize(434, 100);
+		frame.getContentPane().add(scrollPane);
+	}
+	{
+		JLabelRuns1 = new JLabel();
+		JLabelRuns1.setForeground(Color.WHITE);
+		JLabelRuns1.setText(t1.name);
+		JLabelRuns1.setBounds(10, 12, 74, 22);
+		frame.getContentPane().add(JLabelRuns1);
+	}
+	{
+		JLabelRuns2 = new JLabel();
+		JLabelRuns2.setForeground(Color.WHITE);
+		JLabelRuns2.setText(t2.name);
+		JLabelRuns2.setBounds(10, 44, 74, 22);
+		frame.getContentPane().add(JLabelRuns2);
+	}
+	{
+		JLabelOuts = new JLabel();
+		JLabelOuts.setForeground(Color.WHITE);
+		JLabelOuts.setText("Outs");
+		JLabelOuts.setBounds(10, 129, 51, 22);
+		frame.getContentPane().add(JLabelOuts);
+	}
+	{
+		JLabelInning = new JLabel();
+		JLabelInning.setForeground(Color.WHITE);
+		JLabelInning.setText("Inning");
+		JLabelInning.setBounds(10, 96, 51, 22);
+		frame.getContentPane().add(JLabelInning);
+		}
+	{
+		nextInning = new JButton();
+		nextInning.setForeground(Color.BLACK);
+		nextInning.setText("Next Inning");
+		nextInning.setBounds(105, 96, 104, 22);
+		frame.getContentPane().add(nextInning);
 	}
 	
 	/**
@@ -132,18 +184,527 @@ public class testDesign {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+
 
 	public testDesign() {
-		NewInning(t1,t2,0,0,false,0);
+		NewInning2(t1,t2,0,0,false,0);
+	}
+			
+	
+	
+	
+	public int[] NewInning2(Team team1, Team team2, int BatterUp1, int pitcher1, boolean homeC, int homeD){
+		textAreaRuns1.setText("   "+ 0);
+		textAreaRuns2.setText("   "+ 0);
+    	textAreaOuts.setText("   "+ 0);
+		
+		
+			Timer t = new Timer(1500, new ActionListener() {
+				
+				
+				public void actionPerformed(ActionEvent e) {
+					if (outs<3){
+						if (runsBatter[2] != pitcher){
+							runsBatter[2] = pitcher;
+							System.out.println("NEW PITCHER: " + t2.pitchingRotation[pitcher].name);
+						}
+			
+						String runResult = null;
+			
+						if (run1b!=null && run2b==null){
+							int outcome = RunningRolls.Run(run1b, 1);
+							if (outcome == 1){
+								runResult = run1b.name + " Stole Second Base!";
+								run1b.gameSB++;
+								run2b = run1b;
+								run1b = null;
+							}
+							else if (outcome == 2){
+								runResult= run1b.name + " Caught Stealing Second Base!";
+								run1b.gameCS++;
+								run1b = null;
+								outs++;
+							}
+						}
+						
+						else if (run2b!=null && run3b==null && outs < 2){
+							int outcome = RunningRolls.Run(run2b, 2);
+							if (outcome == 1){
+								runResult = run2b.name + " Stole Third Base!";
+								run2b.gameSB++;
+								run3b = run2b;
+								run2b = null;
+							}
+							else if (outcome == 2){
+								runResult = run2b.name + " Caught Stealing Third Base!";
+								run2b.gameCS++;
+								run2b = null;
+								outs++;
+							}
+						}
+						String result;
+						if (runResult!= null){
+							result = runResult;
+						}
+						else {
+							Player p1 = t1.battingOrder[BatterUp];
+							Player p2 = t2.pitchingRotation[pitcher];
+							int resultCode = AtBat.NewAtBat(p1, p2);
+							location = Inning.getLocation(resultCode);
+							//RESULT
+							result = (p1.name + " " + results[resultCode-1] + location);
+							//System.out.println();
+							
+							if (resultCode > 6){
+								if (resultCode == 7){
+									p1.gameSO++;
+									p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+									t2.pitchingRotation[pitcher].gamepK++;
+								}
+								else if (resultCode == 10 && run3b!=null && outs < 2){
+									location = Inning.getLocation(11);
+									double randomSacFly = Math.random();
+									if (randomSacFly < run3b.StealSuccP){
+										runsBatter[0]++;
+										result = (p1.name + " Hit Sacrifice Fly" + location + ", " + run3b.name + " Scored");
+										run3b.gameR++;
+										p1.gameRBI++;
+										t2.pitchingRotation[pitcher].gamepER++;
+									}
+									else {
+										outs++;
+										result = (result + ", " + run3b.name + " Thrown Out At Home");
+										p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+									}
+									run3b = null;
+								}
+								else if (resultCode == 9 && outs < 2){
+									if (run1b!=null && run2b!=null && run3b!=null){
+										double randomBeatOutDP = Math.random();
+										if (randomBeatOutDP < p1.StealSuccP){
+											result = (p1.name + " Grounded Into Fielder's Choice, " + run3b.name + " Out at Home, " + run2b.name + " to Third, " + run1b.name + " to Second");
+											run3b = null;					
+											run3b = run2b;
+											run2b = run1b;
+											run1b = p1;
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+										else {
+											result = (p1.name + " Grounded Into Double Play, " + run3b.name + " Out at Home, " + run2b.name + " to Third, " + run1b.name + " to Second");
+											run3b = null;					
+											run3b = run2b;
+											run2b = run1b;
+											run1b = null;
+											outs++;
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+									}				
+									else if (run1b!=null && run2b!=null) {
+											double randomBeatOutDP = Math.random();
+											if (randomBeatOutDP < p1.StealSuccP){
+												result = (p1.name + " Grounded Into Fielder's Choice, " + run2b.name + " Out at Third, " + run1b.name + " to Second");					
+												run2b = run1b;
+												run1b = p1;
+												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+											}
+											else{
+												result = (p1.name + " Grounded Into Double Play, " + run2b.name + " Out at Third, " + run1b.name + " to Second");
+												run2b = run1b;					
+												run1b = null;
+												outs++;
+												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+											}
+									}
+									else if (run1b!=null && run3b!=null) {
+										if (outs == 0){
+											double randomBeatOutDP = Math.random();
+											if (randomBeatOutDP < p1.StealSuccP){
+												result = (p1.name + " Grounded Into Fielder's Choice, " + run1b.name + " Out at Second, " + run3b.name + " Scored");
+												run3b.gameR++;
+												p1.gameRBI++;
+												run3b = null;
+												run1b = p1;
+												runsBatter[0]++;
+												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+												t2.pitchingRotation[pitcher].gamepER++;
+											}
+											else{
+												result = (p1.name + " Grounded Into Double Play, " + run1b.name + " Out at Second, " + run3b.name + " Scored");
+												run3b.gameR++;
+												p1.gameRBI++;
+												run3b = null;					
+												run1b = null;
+												outs++;
+												runsBatter[0]++;
+												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+												t2.pitchingRotation[pitcher].gamepER++;
+											}
+										}
+									
+										else{
+											double randomBeatOutDP = Math.random();
+											if (randomBeatOutDP < p1.StealSuccP){
+												result = (p1.name + " Grounded Into Fielder's Choice, " + run1b.name + " Out at Second, " + run3b.name + " Scored");	
+												run3b.gameR++;
+												p1.gameRBI++;
+												run3b = null;
+												run1b = p1;
+												runsBatter[0]++;
+												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+												t2.pitchingRotation[pitcher].gamepER++;
+											}
+											else{
+												result = (p1.name + " Grounded Into Double Play, " + run1b.name + " Out at Second");
+												run3b = null;					
+												run1b = null;
+												outs++;
+												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+											}
+										}
+									}
+									else if (run2b!=null && run3b!=null){
+										int outcome = RunningRolls.RunFrom2nd(run3b);
+										if (outcome == 1){
+											result = (result + ", " + run3b.name + " Scored, " + run2b.name + " to Third");
+											p1.gameRBI++;
+											run3b.gameR++;
+											runsBatter[0]++;
+											t2.pitchingRotation[pitcher].gamepER++;
+											run3b = run2b;
+											run2b = null;
+										}
+										else if (outcome == 2){
+											result = (p1.name + " Grounded Into Fielder's Choice, " + run3b.name + " Out at Home" + run2b.name + " to Third");
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+											run3b = run2b;
+											run2b = null;
+											run1b = p1;
+										}
+										else if (outcome == 3){
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+									}
+									else if (run3b!=null){
+										int outcome = RunningRolls.RunFrom2nd(run3b);
+										if (outcome == 1){
+											result = (result + ", " + run3b.name + " Scored");
+											p1.gameRBI++;
+											run3b.gameR++;
+											runsBatter[0]++;
+											t2.pitchingRotation[pitcher].gamepER++;
+											run3b = null;
+										}
+										else if (outcome == 2){
+											result = (p1.name + " Grounded Into Fielder's Choice, " + run3b.name + " Out at Home");
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+											run3b = null;
+											run1b = p1;
+										}
+										else if (outcome == 3){
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+									}
+									else if (run2b!=null){
+										int outcome = RunningRolls.RunFrom2nd(run2b);
+										if (outcome == 1){
+											result = (result + ", " + run2b.name + " to Third");
+											run3b = run2b;
+											run2b = null;
+										}
+										else if (outcome == 2){
+											result = (p1.name + " Grounded Into Fielder's Choice, " + run2b.name + " Out at Third");
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+											run2b = null;
+											run1b = p1;
+										}
+										else if (outcome == 3){
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+									}
+									else if (run1b!=null){
+										double randomBeatOutDP = Math.random();
+										if (randomBeatOutDP < p1.StealSuccP){
+											result = (p1.name + " Grounded Into Fielder's Choice, " + run1b.name + " Out at Second");	
+											run1b = p1;
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+										else{
+											result = (p1.name + " Grounded Into Double Play, " + run1b.name + " Out at Second");
+											run1b = null;
+											outs++;
+											p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+										}
+									}
+									else p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+								}
+								else if (resultCode == 9 || resultCode == 10){
+									p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+								}
+								outs++;
+							}
+							else if (resultCode == 1){		
+								if (run3b!=null){
+									result = (result + ", " + run3b.name + " Scored");
+									run3b.gameR++;
+									p1.gameRBI++;
+									run3b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run2b!=null){
+									int outcome = RunningRolls.RunFrom2nd(run2b);
+									if (outcome == 1){
+										result = (result + ", " + run2b.name + " Scored");
+										run2b.gameR++;
+										p1.gameRBI++;
+										runsBatter[0]++;
+										t2.pitchingRotation[pitcher].gamepER++;
+									}
+									else if (outcome == 2){
+										result = (result + ", " + run2b.name + " Thrown Out At Home");
+										outs++;
+									}
+									else {
+										result = (result + ", " + run2b.name + " To Third");
+										run3b = run2b;
+										
+									}
+									run2b = null;
+								}
+								if (run1b!=null){
+									result = (result + ", " + run1b.name + " To Second");
+									run2b = run1b;
+									run1b = null;
+								}
+								run1b = p1;
+								p1.gamesingles++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+								t2.pitchingRotation[pitcher].gamepH++;
+							}
+							
+							else if (resultCode == 2){		
+								if (run3b!=null){
+									result = (result + ", " + run3b.name + " Scored");
+									run3b.gameR++;
+									p1.gameRBI++;
+									run3b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run2b!=null){
+									result = (result + ", " + run2b.name + " Scored");
+									run2b.gameR++;
+									p1.gameRBI++;
+									run2b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run1b!=null){
+									int outcome = RunningRolls.RunFrom2nd(run1b);
+									if (outcome == 1){
+										result = (result + ", " + run1b.name + " Scored");
+										run1b.gameR++;
+										p1.gameRBI++;
+										runsBatter[0]++;
+										t2.pitchingRotation[pitcher].gamepER++;
+									}
+									else if (outcome == 2){
+										result = (result + ", " + run1b.name + " Thrown Out At Home");
+										outs++;
+									}
+									else {
+										result = (result + ", " + run1b.name + " To Third");
+										run3b = run1b;		
+									}
+									run1b = null;
+								}
+								run2b = p1;
+								p1.gamedoubles++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+								t2.pitchingRotation[pitcher].gamepH++;
+							}
+							
+							
+							else if (resultCode == 3){		
+								if (run3b!=null){
+									result = (result + ", " + run3b.name + " Scored");
+									run3b.gameR++;
+									p1.gameRBI++;
+									run3b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run2b!=null){
+									result = (result + ", " + run2b.name + " Scored");
+									run2b.gameR++;
+									p1.gameRBI++;
+									run2b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run1b!=null){
+									result = (result + ", " + run1b.name + " Scored");
+									run1b.gameR++;
+									p1.gameRBI++;
+									run1b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								run3b = p1;
+								p1.gametriples++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+								t2.pitchingRotation[pitcher].gamepH++;
+							}
+							
+							
+							else if (resultCode == 4){		
+								if (run3b!=null){
+									result = (result + ", " + run3b.name + " Scored");
+									run3b.gameR++;
+									p1.gameRBI++;
+									run3b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run2b!=null){
+									result = (result + ", " + run2b.name + " Scored");
+									run2b.gameR++;
+									p1.gameRBI++;
+									run2b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								if (run1b!=null){
+									result = (result + ", " + run1b.name + " Scored");
+									run1b.gameR++;
+									p1.gameRBI++;
+									run1b = null;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}
+								p1.gameR++;
+								p1.gameRBI++;
+								runsBatter[0]++;
+								p1.gameHR++;
+								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
+								t2.pitchingRotation[pitcher].gamepER++;
+								t2.pitchingRotation[pitcher].gamepH++;
+								t2.pitchingRotation[pitcher].gamepHR++;
+							}
+							
+							
+							else if (resultCode == 5 || resultCode == 6){
+								if (resultCode ==5){
+									p1.gameBB++;
+									t2.pitchingRotation[pitcher].gamepBB++;
+								}
+								else {
+									p1.gameHBP++;
+									t2.pitchingRotation[pitcher].gamepHBP++;
+								}
+										
+								if (run1b!=null && run2b!=null && run3b!=null){
+									result = (result + ", " + run3b.name + " Scored");
+									result = (result + ", " + run2b.name + " To Third");
+									result = (result + ", " + run1b.name + " To Second");
+									run3b.gameR++;
+									p1.gameRBI++;
+									run3b = run2b;
+									run2b = run1b;
+									run1b = p1;
+									runsBatter[0]++;
+									t2.pitchingRotation[pitcher].gamepER++;
+								}				
+								else if (run1b!=null && run2b!=null) {
+									result = (result + ", " + run2b.name + " To Third");
+									result = (result + ", " + run1b.name + " To Second");
+									run3b = run2b;
+									run2b = run1b;
+									run1b = p1;
+								}
+								else if (run2b!=null && run3b!=null){
+									run1b = p1;
+								}
+								else if (run1b!=null && run3b!=null) {
+									result = (result + ", " + run1b.name + " To Second");
+									run2b = run1b;
+									run1b = p1;
+								}
+								else if (run1b!=null){
+									result = (result + ", " + run1b.name + " To Second");
+									run2b = run1b;
+									run1b = p1;
+								}
+								else run1b = p1;
+							}
+							
+							
+							BatterUp++;
+							if (BatterUp == 9){
+								BatterUp = 0;
+							}	
+							
+							p1.gamePA++;
+							t2.pitchingRotation[pitcher].gamepPA++;
+							
+							Random x = new Random();
+							double pitchesAB = x.nextGaussian()*2+3.5;
+							if (pitchesAB < 1){
+								pitchesAB = 1;
+							}
+							t2.pitchingRotation[pitcher].gamepP+=pitchesAB;
+							
+							if ((t2.pitchingRotation[pitcher].gamepP > 115 || t2.pitchingRotation[pitcher].gamepER > 6) && t2.pitchingRotation[pitcher].gamepER != 0){
+								pitcher = 5;
+							}
+							
+							if (homeChance && (runsBatter[0]>homeDef)){
+								outs=3;
+							}
+						}
+						
+						System.out.println(result);
+						textAreaPBP.append(result + "\n");
+						textAreaRuns1.setText("   "+ runsBatter[0]);
+				    	textAreaOuts.setText("   "+ outs);
+						
+				    	if (run1b != null){
+				    		firstBase.setBackground(new Color(0, 0, 0));
+				    	}
+				    	else firstBase.setBackground(new Color(255, 255, 255));
+				    	if (run2b != null){
+				    		secondBase.setBackground(new Color(0, 0, 0));
+				    	}
+				    	else secondBase.setBackground(new Color(255, 255, 255));
+				    	if (run3b != null){
+				    		thirdBase.setBackground(new Color(0, 0, 0));
+				    	}
+				    	else thirdBase.setBackground(new Color(255, 255, 255));
+						
+						
+					}
+					
+				}
+			});
+			t.start();
+		
+		
+		
+		System.out.println();
+		//System.out.println("3 Outs, inning over");
+		runsBatter[1] = BatterUp;
+		return runsBatter;
+	
 			
 	}
 	
+	
+	
+	
+	
 	public void NewInning(Team t1, Team t2, int BatterUp, int pitcher, boolean homeChance, int homeDef){
 		Inning.NewInning(t1, t2, 0, 0, false, 0);
-		textAreaRuns.setText("   "+ 0);
+		textAreaRuns1.setText("   "+ 0);
     	textAreaOuts.setText("   "+ 0);
 		
 		Timer t = new Timer(2000, new ActionListener() {
@@ -170,7 +731,7 @@ public class testDesign {
 		    		textAreaPBP.append(results + "\n");
 		    	}
 		    	
-		    	textAreaRuns.setText("   "+ runs);
+		    	textAreaRuns1.setText("   "+ runs);
 		    	textAreaOuts.setText("   "+ outs);
 		    	
 		    	if (bases[0] == 1){
