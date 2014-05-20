@@ -188,11 +188,11 @@ public class MainSetup {
 		//t2.printTeam();
 		
 		//GameDisplay.main(t1, t2, 0, 0);
-		testDesign.main(t1, t2, 0, 0, false, 0);
+		//testDesign.main(t1, t2, 0, 0, false, 0);
 		
 		
 		//Game.NewGame(t1, t2, 0, 0);
-		//simSeason(t1, t2);
+		simSeason(t1, t2);
 
 	      
 	}

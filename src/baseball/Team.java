@@ -6,6 +6,7 @@ public class Team {
 	String name;
 	Player P, DH, C, FB, SB, TB, SS, LF, CF, RF;
 	Player[] battingOrder, pitchingRotation;
+	int[] runsBatter = new int [3];
 	double G, W, L, RunsF, RunsA;
 
 		

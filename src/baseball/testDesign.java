@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class testDesign {
 	static Team t1;
@@ -25,10 +27,22 @@ public class testDesign {
 	int outs; 
 	int i;
 	String location;
-	int[] runsBatter = new int [3];
+	
 	Player run1b;
 	Player run2b;
 	Player run3b;
+	//int[] runsBatter = new int [3];
+	double inning;
+	int team1Score;
+	int team2Score;
+	int batterUp1;
+	int batterUp2;
+	int inningpitcher1;
+	int inningpitcher2;
+	Team team1;
+	Team team2;
+	int pitcher1;
+	int pitcher2;
 
 	
 	
@@ -42,7 +56,7 @@ public class testDesign {
 	private JTextArea secondBase;
 	private JTextArea thirdBase;
 	private JTextArea homeBase;
-	private JTextArea inning;
+	private JTextArea inningText;
 	private JLabel JLabelRuns1;
 	private JLabel JLabelRuns2;
 	private JLabel JLabelOuts;
@@ -111,10 +125,10 @@ public class testDesign {
 		frame.getContentPane().add(homeBase);
 	}
 	{
-		inning = new JTextArea();
-		inning.setEditable(false);
-		inning.setBounds(57, 95, 28, 22);
-		frame.getContentPane().add(inning);
+		inningText = new JTextArea();
+		inningText.setEditable(false);
+		inningText.setBounds(57, 95, 28, 22);
+		frame.getContentPane().add(inningText);
 	}
 	{
 	}
@@ -187,25 +201,148 @@ public class testDesign {
 
 
 	public testDesign() {
-		NewInning2(t1,t2,0,0,false,0);
+		//NewInning(t1,t2,0,0,false,0);
+		NewGame(t1,t2,0,0);
 	}
 			
 	
 	
+	public void NewGame(Team t1, Team t2, int p1, int p2){
+		
+		inning = 0;
+		team1Score=0;
+		team2Score=0;
+		team1 = t1;
+		team2 = t2;
+		inningpitcher1 = p1;
+		inningpitcher2 = p2;
+		batterUp1 = 0;
+		batterUp2 = 0;
+		
+		System.out.println("Pitching for the " + team1.name + ": " + team1.pitchingRotation[p1].name);
+		System.out.println("Pitching for the " + team2.name + ": " + team2.pitchingRotation[p2].name);
+		System.out.println();
+		
+		
+		nextInning.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				inning+=0.5;
+				if (inning < 10 || team1Score == team2Score){
+					if ((2*inning) % 2 != 0){
+						System.out.println("TOP OF INNING " + inning);
+						int[] inningArray1 = NewInning(team1, team2, false, 0);
+						int score1Inc = inningArray1[0];
+						inningpitcher2 = inningArray1[2];
+						team1Score += team1.runsBatter[0];
+						batterUp1 = inningArray1[1];
+						team2.pitchingRotation[inningpitcher2].gamepIP++;
+					}
+					else {
+						System.out.println("TOP OF INNING " + inning);
+						int[] inningArray2 = NewInning(team2, team1, false, 0);
+						int score2Inc = inningArray2[0];
+						inningpitcher1 = inningArray2[2];
+						team2Score += team2.runsBatter[0];
+						batterUp2 = inningArray2[1];
+						team1.pitchingRotation[inningpitcher1].gamepIP++;
+					}
+					
+					/*if (inning > 8 && team1Score >= team2Score){
+						System.out.println(team1.name + ": " + team1Score);
+						System.out.println(team2.name + ": " + team2Score);
+						System.out.println();
+						
+						int homeDef = team1Score-team2Score;
+						System.out.println("BOTTOM OF INNING " + inning);
+						int[] inningArray2 = NewInning(team2, team1, batterUp2, inningpitcher1, true, homeDef);			
+						int score2Inc = inningArray2[0];
+						inningpitcher1 = inningArray2[2];
+						team2Score += score2Inc;			
+						batterUp2 = inningArray2[1];
+						team1.pitchingRotation[inningpitcher1].gamepIP++;
+					}
+					else if (inning > 8 && team1Score < team2Score){
+						//home team doesn't need at bats, game over
+					}
+					else{
+						System.out.println(team1.name + ": " + team1Score);
+						System.out.println(team2.name + ": " + team2Score);
+						System.out.println();
+						
+						System.out.println("BOTTOM OF INNING " + inning);
+						int[] inningArray2 = NewInning(team2, team1, batterUp2, inningpitcher1, false, 0);			
+						int score2Inc = inningArray2[0];
+						inningpitcher1 = inningArray2[2];
+						team2Score += score2Inc;			
+						batterUp2 = inningArray2[1];
+						team1.pitchingRotation[inningpitcher1].gamepIP++;
+					}*/
+					System.out.println("END OF INNING " + inning);
+					System.out.println(team1.name + ": " + team1Score);
+					System.out.println(team2.name + ": " + team2Score);
+					System.out.println();
+				}
+				
+			}
+		});
+		
+		
+
+		
+		
+		if (team1Score > team2Score){
+			System.out.println(team1.name + " Win!");
+			team1.W++;
+			team2.L++;
+			team1.pitchingRotation[pitcher1].seasonGS++;
+			team1.pitchingRotation[pitcher1].seasonW++;
+			team2.pitchingRotation[pitcher2].seasonGS++;
+			team2.pitchingRotation[pitcher2].seasonL++;
+		}
+		else {
+			System.out.println(team2.name + " Win!");
+			team2.W++;
+			team1.L++;
+			team2.pitchingRotation[pitcher2].seasonGS++;
+			team2.pitchingRotation[pitcher2].seasonW++;
+			team1.pitchingRotation[pitcher1].seasonGS++;
+			team1.pitchingRotation[pitcher1].seasonL++;
+		}
+		team1.G++;
+		team2.G++;
+		team1.RunsF+=team1Score;
+		team1.RunsA+=team2Score;
+		team2.RunsF+=team2Score;
+		team2.RunsA+=team1Score;
+		
+		System.out.println();
+	}
 	
-	public int[] NewInning2(Team team1, Team team2, int BatterUp1, int pitcher1, boolean homeC, int homeD){
-		textAreaRuns1.setText("   "+ 0);
-		textAreaRuns2.setText("   "+ 0);
+	
+	
+	public int[] NewInning(final Team tea1, Team tea2, boolean homeC, int homeD){
+		textAreaRuns1.setText("   "+ team1.runsBatter[0]);
+		textAreaRuns2.setText("   "+ team2.runsBatter[0]);
     	textAreaOuts.setText("   "+ 0);
+    	textAreaPBP.setText("");
+    	inningText.setText("   "+ inning);
+    	outs = 0;
+    	t1 = tea1;
+		t2 = tea2;
+
+		run1b = null;
+		run2b = null;
+		run3b = null;
+		
 		
 		
 			Timer t = new Timer(1500, new ActionListener() {
 				
-				
 				public void actionPerformed(ActionEvent e) {
 					if (outs<3){
-						if (runsBatter[2] != pitcher){
-							runsBatter[2] = pitcher;
+						if (t1.runsBatter[2] != pitcher){
+							t1.runsBatter[2] = pitcher;
 							System.out.println("NEW PITCHER: " + t2.pitchingRotation[pitcher].name);
 						}
 			
@@ -247,8 +384,8 @@ public class testDesign {
 							result = runResult;
 						}
 						else {
-							Player p1 = t1.battingOrder[BatterUp];
-							Player p2 = t2.pitchingRotation[pitcher];
+							Player p1 = t1.battingOrder[t1.runsBatter[1]];
+							Player p2 = t2.pitchingRotation[t1.runsBatter[2]];
 							int resultCode = AtBat.NewAtBat(p1, p2);
 							location = Inning.getLocation(resultCode);
 							//RESULT
@@ -265,7 +402,7 @@ public class testDesign {
 									location = Inning.getLocation(11);
 									double randomSacFly = Math.random();
 									if (randomSacFly < run3b.StealSuccP){
-										runsBatter[0]++;
+										t1.runsBatter[0]++;
 										result = (p1.name + " Hit Sacrifice Fly" + location + ", " + run3b.name + " Scored");
 										run3b.gameR++;
 										p1.gameRBI++;
@@ -324,7 +461,7 @@ public class testDesign {
 												p1.gameRBI++;
 												run3b = null;
 												run1b = p1;
-												runsBatter[0]++;
+												t1.runsBatter[0]++;
 												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 												t2.pitchingRotation[pitcher].gamepER++;
 											}
@@ -335,7 +472,7 @@ public class testDesign {
 												run3b = null;					
 												run1b = null;
 												outs++;
-												runsBatter[0]++;
+												t1.runsBatter[0]++;
 												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 												t2.pitchingRotation[pitcher].gamepER++;
 											}
@@ -349,7 +486,7 @@ public class testDesign {
 												p1.gameRBI++;
 												run3b = null;
 												run1b = p1;
-												runsBatter[0]++;
+												t1.runsBatter[0]++;
 												p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 												t2.pitchingRotation[pitcher].gamepER++;
 											}
@@ -368,7 +505,7 @@ public class testDesign {
 											result = (result + ", " + run3b.name + " Scored, " + run2b.name + " to Third");
 											p1.gameRBI++;
 											run3b.gameR++;
-											runsBatter[0]++;
+											t1.runsBatter[0]++;
 											t2.pitchingRotation[pitcher].gamepER++;
 											run3b = run2b;
 											run2b = null;
@@ -390,7 +527,7 @@ public class testDesign {
 											result = (result + ", " + run3b.name + " Scored");
 											p1.gameRBI++;
 											run3b.gameR++;
-											runsBatter[0]++;
+											t1.runsBatter[0]++;
 											t2.pitchingRotation[pitcher].gamepER++;
 											run3b = null;
 										}
@@ -448,7 +585,7 @@ public class testDesign {
 									run3b.gameR++;
 									p1.gameRBI++;
 									run3b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run2b!=null){
@@ -457,7 +594,7 @@ public class testDesign {
 										result = (result + ", " + run2b.name + " Scored");
 										run2b.gameR++;
 										p1.gameRBI++;
-										runsBatter[0]++;
+										t1.runsBatter[0]++;
 										t2.pitchingRotation[pitcher].gamepER++;
 									}
 									else if (outcome == 2){
@@ -488,7 +625,7 @@ public class testDesign {
 									run3b.gameR++;
 									p1.gameRBI++;
 									run3b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run2b!=null){
@@ -496,7 +633,7 @@ public class testDesign {
 									run2b.gameR++;
 									p1.gameRBI++;
 									run2b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run1b!=null){
@@ -505,7 +642,7 @@ public class testDesign {
 										result = (result + ", " + run1b.name + " Scored");
 										run1b.gameR++;
 										p1.gameRBI++;
-										runsBatter[0]++;
+										t1.runsBatter[0]++;
 										t2.pitchingRotation[pitcher].gamepER++;
 									}
 									else if (outcome == 2){
@@ -531,7 +668,7 @@ public class testDesign {
 									run3b.gameR++;
 									p1.gameRBI++;
 									run3b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run2b!=null){
@@ -539,7 +676,7 @@ public class testDesign {
 									run2b.gameR++;
 									p1.gameRBI++;
 									run2b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run1b!=null){
@@ -547,7 +684,7 @@ public class testDesign {
 									run1b.gameR++;
 									p1.gameRBI++;
 									run1b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								run3b = p1;
@@ -563,7 +700,7 @@ public class testDesign {
 									run3b.gameR++;
 									p1.gameRBI++;
 									run3b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run2b!=null){
@@ -571,7 +708,7 @@ public class testDesign {
 									run2b.gameR++;
 									p1.gameRBI++;
 									run2b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								if (run1b!=null){
@@ -579,12 +716,12 @@ public class testDesign {
 									run1b.gameR++;
 									p1.gameRBI++;
 									run1b = null;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}
 								p1.gameR++;
 								p1.gameRBI++;
-								runsBatter[0]++;
+								t1.runsBatter[0]++;
 								p1.gameHR++;
 								p1.gameAB++; t2.pitchingRotation[pitcher].gamepAB++;
 								t2.pitchingRotation[pitcher].gamepER++;
@@ -612,7 +749,7 @@ public class testDesign {
 									run3b = run2b;
 									run2b = run1b;
 									run1b = p1;
-									runsBatter[0]++;
+									t1.runsBatter[0]++;
 									t2.pitchingRotation[pitcher].gamepER++;
 								}				
 								else if (run1b!=null && run2b!=null) {
@@ -639,9 +776,9 @@ public class testDesign {
 							}
 							
 							
-							BatterUp++;
-							if (BatterUp == 9){
-								BatterUp = 0;
+							t1.runsBatter[1]++;
+							if (t1.runsBatter[1] == 9){
+								t1.runsBatter[1] = 0;
 							}	
 							
 							p1.gamePA++;
@@ -658,14 +795,14 @@ public class testDesign {
 								pitcher = 5;
 							}
 							
-							if (homeChance && (runsBatter[0]>homeDef)){
+							if (homeChance && (t1.runsBatter[0]>homeDef)){
 								outs=3;
 							}
 						}
 						
 						System.out.println(result);
 						textAreaPBP.append(result + "\n");
-						textAreaRuns1.setText("   "+ runsBatter[0]);
+						textAreaRuns1.setText("   "+ t1.runsBatter[0]);
 				    	textAreaOuts.setText("   "+ outs);
 						
 				    	if (run1b != null){
@@ -692,8 +829,8 @@ public class testDesign {
 		
 		System.out.println();
 		//System.out.println("3 Outs, inning over");
-		runsBatter[1] = BatterUp;
-		return runsBatter;
+		//t1.runsBatter[1] = BatterUp;
+		return t1.runsBatter;
 	
 			
 	}
@@ -702,8 +839,8 @@ public class testDesign {
 	
 	
 	
-	public void NewInning(Team t1, Team t2, int BatterUp, int pitcher, boolean homeChance, int homeDef){
-		Inning.NewInning(t1, t2, 0, 0, false, 0);
+	public void NewInning2(Team t1, Team t2, int BatterUp, int pitcher, boolean homeChance, int homeDef){
+		//NewInning(t1, t2, 0, 0, false, 0, "away");
 		textAreaRuns1.setText("   "+ 0);
     	textAreaOuts.setText("   "+ 0);
 		
