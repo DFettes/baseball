@@ -40,6 +40,15 @@ public class Player {
 		}
 	}
 	
+	public void setSeasonStats() {
+		seasonsingles = seasonH - seasondoubles - seasontriples - seasonHR;
+		seasonBattingAVG = seasonH/seasonAB;
+		seasonOBP = (seasonH + seasonBB + seasonHBP)/seasonPA;
+		seasonTB = seasonsingles + 2*seasondoubles + 3*seasontriples + 4*seasonHR;
+		seasonSLG = seasonTB/seasonAB;
+		seasonOPS = seasonOBP + seasonSLG;
+	}
+	
 	public void setPitchingStats() {
 		pERA = 9*pER/pIP;
 		pWHIP = (pBB + pH)/pIP;

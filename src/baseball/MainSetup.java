@@ -1,6 +1,13 @@
 package baseball;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Iterator;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class MainSetup {
 	
@@ -95,12 +102,7 @@ public class MainSetup {
 		System.out.println(t1.name);
 		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP----AVG----OBP---TB----SLG----OPS");
 		for (int i=0; i<9; i++){
-			t1.battingOrder[i].seasonH = t1.battingOrder[i].seasonsingles + t1.battingOrder[i].seasondoubles + t1.battingOrder[i].seasontriples + t1.battingOrder[i].seasonHR;
-			t1.battingOrder[i].seasonBattingAVG = t1.battingOrder[i].seasonH/t1.battingOrder[i].seasonAB;
-			t1.battingOrder[i].seasonOBP = (t1.battingOrder[i].seasonH + t1.battingOrder[i].seasonBB + t1.battingOrder[i].seasonHBP)/t1.battingOrder[i].seasonPA;
-			t1.battingOrder[i].seasonTB = t1.battingOrder[i].seasonsingles + 2*t1.battingOrder[i].seasondoubles + 3*t1.battingOrder[i].seasontriples + 4*t1.battingOrder[i].seasonHR;
-			t1.battingOrder[i].seasonSLG = t1.battingOrder[i].seasonTB/t1.battingOrder[i].seasonAB;
-			t1.battingOrder[i].seasonOPS = t1.battingOrder[i].seasonOBP + t1.battingOrder[i].seasonSLG;
+			t1.battingOrder[i].setSeasonStats();
 			System.out.format("%-18s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-6d%-5d%-7s%-7s%-5d%-7s%-7s", t1.battingOrder[i].name, (int)t1.battingOrder[i].seasonPA, (int)t1.battingOrder[i].seasonAB, (int)t1.battingOrder[i].seasonR, (int)t1.battingOrder[i].seasonH, (int)t1.battingOrder[i].seasonRBI, (int)t1.battingOrder[i].seasonsingles, (int)t1.battingOrder[i].seasondoubles, (int)t1.battingOrder[i].seasontriples, (int)t1.battingOrder[i].seasonHR, (int)t1.battingOrder[i].seasonSB, (int)t1.battingOrder[i].seasonCS, (int)t1.battingOrder[i].seasonBB, (int)t1.battingOrder[i].seasonSO, (int)t1.battingOrder[i].seasonHBP, twoDForm.format(t1.battingOrder[i].seasonBattingAVG), twoDForm.format(t1.battingOrder[i].seasonOBP), (int)t1.battingOrder[i].seasonTB, twoDForm.format(t1.battingOrder[i].seasonSLG), twoDForm.format(t1.battingOrder[i].seasonOPS));
 			System.out.println();
 		}
@@ -116,12 +118,7 @@ public class MainSetup {
 		System.out.println(t2.name);
 		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP----AVG----OBP---TB----SLG----OPS");
 		for (int i=0; i<9; i++){
-			t2.battingOrder[i].seasonH = t2.battingOrder[i].seasonsingles + t2.battingOrder[i].seasondoubles + t2.battingOrder[i].seasontriples + t2.battingOrder[i].seasonHR;
-			t2.battingOrder[i].seasonBattingAVG = t2.battingOrder[i].seasonH/t2.battingOrder[i].seasonAB;
-			t2.battingOrder[i].seasonOBP = (t2.battingOrder[i].seasonH + t2.battingOrder[i].seasonBB + t2.battingOrder[i].seasonHBP)/t2.battingOrder[i].seasonPA;
-			t2.battingOrder[i].seasonTB = t2.battingOrder[i].seasonsingles + 2*t2.battingOrder[i].seasondoubles + 3*t2.battingOrder[i].seasontriples + 4*t2.battingOrder[i].seasonHR;
-			t2.battingOrder[i].seasonSLG = t2.battingOrder[i].seasonTB/t2.battingOrder[i].seasonAB;
-			t2.battingOrder[i].seasonOPS = t2.battingOrder[i].seasonOBP + t2.battingOrder[i].seasonSLG;
+			t2.battingOrder[i].setSeasonStats();
 			System.out.format("%-18s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-6d%-5d%-7s%-7s%-5d%-7s%-7s", t2.battingOrder[i].name, (int)t2.battingOrder[i].seasonPA, (int)t2.battingOrder[i].seasonAB, (int)t2.battingOrder[i].seasonR, (int)t2.battingOrder[i].seasonH, (int)t2.battingOrder[i].seasonRBI, (int)t2.battingOrder[i].seasonsingles, (int)t2.battingOrder[i].seasondoubles, (int)t2.battingOrder[i].seasontriples, (int)t2.battingOrder[i].seasonHR, (int)t2.battingOrder[i].seasonSB, (int)t2.battingOrder[i].seasonCS, (int)t2.battingOrder[i].seasonBB, (int)t2.battingOrder[i].seasonSO, (int)t2.battingOrder[i].seasonHBP, twoDForm.format(t2.battingOrder[i].seasonBattingAVG), twoDForm.format(t2.battingOrder[i].seasonOBP), (int)t2.battingOrder[i].seasonTB, twoDForm.format(t2.battingOrder[i].seasonSLG), twoDForm.format(t2.battingOrder[i].seasonOPS));
 			System.out.println();
 		}
@@ -190,11 +187,13 @@ public class MainSetup {
 		//t1.printTeam();
 		//t2.printTeam();
 		
-
+		//GameDisplay.main(t1, t2, 0, 0);
+		testDesign.main(t1, t2, 0, 0, false, 0);
+		
 		
 		//Game.NewGame(t1, t2, 0, 0);
-		simSeason(t1, t2);
-	    
+		//simSeason(t1, t2);
+
 	      
 	}
 

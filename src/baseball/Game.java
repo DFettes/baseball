@@ -1,43 +1,6 @@
 package baseball;
 
 public class Game {
-	public static void PrintBoxScore(Team t1, Team t2, int p1, int p2){
-		System.out.println();
-		System.out.println(t1.name);
-		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP");
-		for (int i=0; i<9; i++){
-			t1.battingOrder[i].gameH = t1.battingOrder[i].gamesingles + t1.battingOrder[i].gamedoubles + t1.battingOrder[i].gametriples + t1.battingOrder[i].gameHR;
-			System.out.format("%-20s%-5d%-4d%-4d%-5d%-6d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.battingOrder[i].name, (int)t1.battingOrder[i].gamePA, (int)t1.battingOrder[i].gameAB, (int)t1.battingOrder[i].gameR, (int)t1.battingOrder[i].gameH, (int)t1.battingOrder[i].gameRBI, (int)t1.battingOrder[i].gamesingles, (int)t1.battingOrder[i].gamedoubles, (int)t1.battingOrder[i].gametriples, (int)t1.battingOrder[i].gameHR, (int)t1.battingOrder[i].gameSB, (int)t1.battingOrder[i].gameCS, (int)t1.battingOrder[i].gameBB, (int)t1.battingOrder[i].gameSO, (int)t1.battingOrder[i].gameHBP);
-			System.out.println();
-		}
-		System.out.println();
-		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
-		for (int i=0; i<6; i++){
-			if (t1.pitchingRotation[i].gamepIP > 0){
-				System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.pitchingRotation[i].name, (int)t1.pitchingRotation[i].gamepIP, (int)t1.pitchingRotation[i].gamepH, (int)t1.pitchingRotation[i].gamepER, (int)t1.pitchingRotation[i].gamepBB, (int)t1.pitchingRotation[i].gamepHBP, (int)t1.pitchingRotation[i].gamepK, (int)t1.pitchingRotation[i].gamepHR, (int)t1.pitchingRotation[i].gamepP);	
-				System.out.println();
-			}
-		}
-		
-
-		System.out.println();
-		System.out.println(t2.name);
-		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP");
-		for (int i=0; i<9; i++){
-			t2.battingOrder[i].gameH = t2.battingOrder[i].gamesingles + t2.battingOrder[i].gamedoubles + t2.battingOrder[i].gametriples + t2.battingOrder[i].gameHR;
-			System.out.format("%-20s%-5d%-4d%-4d%-5d%-6d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.battingOrder[i].name, (int)t2.battingOrder[i].gamePA, (int)t2.battingOrder[i].gameAB, (int)t2.battingOrder[i].gameR, (int)t2.battingOrder[i].gameH, (int)t2.battingOrder[i].gameRBI, (int)t2.battingOrder[i].gamesingles, (int)t2.battingOrder[i].gamedoubles, (int)t2.battingOrder[i].gametriples, (int)t2.battingOrder[i].gameHR, (int)t2.battingOrder[i].gameSB, (int)t2.battingOrder[i].gameCS, (int)t2.battingOrder[i].gameBB, (int)t2.battingOrder[i].gameSO, (int)t2.battingOrder[i].gameHBP);
-			System.out.println();
-		}
-		System.out.println();
-		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
-		for (int i=0; i<6; i++){
-			if (t2.pitchingRotation[i].gamepIP > 0){
-				System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.pitchingRotation[i].name, (int)t2.pitchingRotation[i].gamepIP, (int)t2.pitchingRotation[i].gamepH, (int)t2.pitchingRotation[i].gamepER, (int)t2.pitchingRotation[i].gamepBB, (int)t2.pitchingRotation[i].gamepHBP, (int)t2.pitchingRotation[i].gamepK, (int)t2.pitchingRotation[i].gamepHR, (int)t2.pitchingRotation[i].gamepP);	
-				System.out.println();
-			}
-		}
-		System.out.println();
-	}
 	
 	public static void NewGame(Team team1, Team team2, int pitcher1, int pitcher2){
 		int inning = 1;
@@ -126,6 +89,48 @@ public class Game {
 		
 		System.out.println();
 		PrintBoxScore(team1, team2, pitcher1, pitcher2);
+	}
+	
+	
+	
+	
+	
+	public static void PrintBoxScore(Team t1, Team t2, int p1, int p2){
+		System.out.println();
+		System.out.println(t1.name);
+		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP");
+		for (int i=0; i<9; i++){
+			t1.battingOrder[i].gameH = t1.battingOrder[i].gamesingles + t1.battingOrder[i].gamedoubles + t1.battingOrder[i].gametriples + t1.battingOrder[i].gameHR;
+			System.out.format("%-20s%-5d%-4d%-4d%-5d%-6d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.battingOrder[i].name, (int)t1.battingOrder[i].gamePA, (int)t1.battingOrder[i].gameAB, (int)t1.battingOrder[i].gameR, (int)t1.battingOrder[i].gameH, (int)t1.battingOrder[i].gameRBI, (int)t1.battingOrder[i].gamesingles, (int)t1.battingOrder[i].gamedoubles, (int)t1.battingOrder[i].gametriples, (int)t1.battingOrder[i].gameHR, (int)t1.battingOrder[i].gameSB, (int)t1.battingOrder[i].gameCS, (int)t1.battingOrder[i].gameBB, (int)t1.battingOrder[i].gameSO, (int)t1.battingOrder[i].gameHBP);
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
+		for (int i=0; i<6; i++){
+			if (t1.pitchingRotation[i].gamepIP > 0){
+				System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t1.pitchingRotation[i].name, (int)t1.pitchingRotation[i].gamepIP, (int)t1.pitchingRotation[i].gamepH, (int)t1.pitchingRotation[i].gamepER, (int)t1.pitchingRotation[i].gamepBB, (int)t1.pitchingRotation[i].gamepHBP, (int)t1.pitchingRotation[i].gamepK, (int)t1.pitchingRotation[i].gamepHR, (int)t1.pitchingRotation[i].gamepP);	
+				System.out.println();
+			}
+		}
+		
+
+		System.out.println();
+		System.out.println(t2.name);
+		System.out.println("Player-------------PA---AB---R---H---RBI---1B---2B---3B---HR---SB---CS---BB---SO---HBP");
+		for (int i=0; i<9; i++){
+			t2.battingOrder[i].gameH = t2.battingOrder[i].gamesingles + t2.battingOrder[i].gamedoubles + t2.battingOrder[i].gametriples + t2.battingOrder[i].gameHR;
+			System.out.format("%-20s%-5d%-4d%-4d%-5d%-6d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.battingOrder[i].name, (int)t2.battingOrder[i].gamePA, (int)t2.battingOrder[i].gameAB, (int)t2.battingOrder[i].gameR, (int)t2.battingOrder[i].gameH, (int)t2.battingOrder[i].gameRBI, (int)t2.battingOrder[i].gamesingles, (int)t2.battingOrder[i].gamedoubles, (int)t2.battingOrder[i].gametriples, (int)t2.battingOrder[i].gameHR, (int)t2.battingOrder[i].gameSB, (int)t2.battingOrder[i].gameCS, (int)t2.battingOrder[i].gameBB, (int)t2.battingOrder[i].gameSO, (int)t2.battingOrder[i].gameHBP);
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println("Pitcher-------------IP---H---ER---BB---HBP---K---HR---Pitches");
+		for (int i=0; i<6; i++){
+			if (t2.pitchingRotation[i].gamepIP > 0){
+				System.out.format("%-20s%-5d%-5d%-5d%-5d%-5d%-5d%-5d%-5d", t2.pitchingRotation[i].name, (int)t2.pitchingRotation[i].gamepIP, (int)t2.pitchingRotation[i].gamepH, (int)t2.pitchingRotation[i].gamepER, (int)t2.pitchingRotation[i].gamepBB, (int)t2.pitchingRotation[i].gamepHBP, (int)t2.pitchingRotation[i].gamepK, (int)t2.pitchingRotation[i].gamepHR, (int)t2.pitchingRotation[i].gamepP);	
+				System.out.println();
+			}
+		}
+		System.out.println();
 	}
 
 }
