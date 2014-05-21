@@ -1,13 +1,15 @@
 package baseball;
 
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.Iterator;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import java.text.DecimalFormat;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class MainSetup {
 	
@@ -141,7 +143,10 @@ public class MainSetup {
 	
 	
 	public static void main(String[] args) {
-		Player[] playerArray = CreatePlayer.CreatePlayers();
+		
+		Player[] playerArray = DBpull.getPlayers();
+		Player[] pitcherArray = DBpull.getPitchers();
+		
 		Player p1 = playerArray[0];
 		Player p2 = playerArray[1];
 		Player p3 = playerArray[2];
@@ -152,12 +157,12 @@ public class MainSetup {
 		Player p8 = playerArray[7];
 		Player p9 = playerArray[8];
 		
-		Player p19 = playerArray[18];
-		Player p20 = playerArray[19];
-		Player p21 = playerArray[20];
-		Player p22 = playerArray[21];
-		Player p23 = playerArray[22];
-		Player p29 = playerArray[28];
+		Player p19 = pitcherArray[0];
+		Player p20 = pitcherArray[1];
+		Player p21 = pitcherArray[2];
+		Player p22 = pitcherArray[3];
+		Player p23 = pitcherArray[4];
+		Player p29 = pitcherArray[5];
 		
 		
 		Player p10 = playerArray[9];
@@ -170,29 +175,29 @@ public class MainSetup {
 		Player p17 = playerArray[16];
 		Player p18 = playerArray[17];
 		
-		Player p24 = playerArray[23];
-		Player p25 = playerArray[24];
-		Player p26 = playerArray[25];
-		Player p27 = playerArray[26];
-		Player p28 = playerArray[27];
-		Player p30 = playerArray[29];
+		Player p24 = pitcherArray[6];
+		Player p25 = pitcherArray[7];
+		Player p26 = pitcherArray[8];
+		Player p27 = pitcherArray[9];
+		Player p28 = pitcherArray[10];
+		Player p30 = pitcherArray[11];
 		
-		Player[] t1PRot = {p19,p24,p28,p22,p27,p30};
-		Player[] t2PRot = {p25,p23,p20,p26,p21,p29};
+		Player[] t1PRot = {p19,p27,p29,p22,p25,p30};
+		Player[] t2PRot = {p24,p23,p20,p26,p21,p28};
 		
 		Team t1 = CreateTeam.NewTeam("Blue Jays", t1PRot, p10,p12,p11,p13,p16,p18,p14,p15,p17);
 		Team t2 = CreateTeam.NewTeam("Legends", t2PRot, p4,p3,p5,p2,p8,p1,p9,p6,p7);
-		
 		
 		//t1.printTeam();
 		//t2.printTeam();
 		
 		//GameDisplay.main(t1, t2, 0, 0);
 		//testDesign.main(t1, t2, 0, 0, false, 0);
+
 		
 		
-		//Game.NewGame(t1, t2, 0, 0);
-		simSeason(t1, t2);
+		Game.NewGame(t1, t2, 0, 0);
+		//simSeason(t1, t2);
 
 	      
 	}

@@ -362,7 +362,7 @@ public class CreatePlayer {
 		
 		Player p21 = new Player("Esteban Loaiza");
 		p21.ppIP(2099);
-		p21.ppER(99);
+		p21.ppER(1084);
 		p21.ppK(1382);
 		p21.ppH(2352);
 		p21.ppBB(604);
